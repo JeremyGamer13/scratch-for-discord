@@ -47,8 +47,8 @@ export default {
                 zoom: {
                     controls: true,
                     startScale: 0.9,
-                    maxScale: 3,
-                    minScale: 0.3,
+                    maxScale: 10,
+                    minScale: 0.05,
                     scaleSpeed: 1.2
                 },
             move:{
@@ -155,8 +155,8 @@ export default {
                 zoom: {
                     controls: true,
                     startScale: 0.9,
-                    maxScale: 3,
-                    minScale: 0.3,
+                    maxScale: 10,
+                    minScale: 0.05,
                     scaleSpeed: 1.2
                 },
             move:{
@@ -341,8 +341,8 @@ function svgToPng_(data, width, height, callback) {
                 zoom: {
                     controls: true,
                     startScale: 0.9,
-                    maxScale: 3,
-                    minScale: 0.3,
+                    maxScale: 10,
+                    minScale: 0.05,
                     scaleSpeed: 1.2
                 },
             move:{
