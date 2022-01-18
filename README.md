@@ -1,8 +1,8 @@
-# [Scratch For Discord Preview 469](https://deploy-preview-469--scratch-for-discord.netlify.com)
+# [Scratch For Discord JT](https://scratch-for-discord-jt.jeremygamer13.repl.co/)
 
 This is a fork from S4D 469, and is made to test out some blocks I want to try adding.
 
-🐱 Make your Discord bot using Scratch blocks! [Scratch For Discord](https://deploy-preview-469--scratch-for-discord.netlify.com) is an advanced fork of [discord-blocks](https://discordblocks.leondrolio.com/). Thanks to [7coil](https://github.com/7coil) for their great work!
+🐱 Make your Discord bot using Scratch blocks! [Scratch For Discord](https://scratch-for-discord-jt.jeremygamer13.repl.co/) is an advanced fork of [discord-blocks](https://discordblocks.leondrolio.com/). Thanks to [7coil](https://github.com/7coil) for their great work!
 
 S4D 469 is forked from [the original S4D](https://scratch-for-discord.netlify.app) made by Androz2091
 
@@ -50,6 +50,7 @@ The discord.js guide has [instructions for setting up a bot application](https:/
 
 ## Credits
 
+(More credits in the apps navigation bar)
 * Snowflake107 ([snowflake107](https://github.com/Snowflake107))
 * Discord.js ([discordjs/discord.js](https://github.com/discordjs/discord.js))
 * Blockly ([google/blockly](https://github.com/google/blockly))
