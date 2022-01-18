@@ -29,6 +29,9 @@ if(js.includes("Snake") || (js.includes("Calculator")) || (js.includes("Fight"))
 if(js.includes("censor")){
     array.push("const censor = require('discord-censor');")
 }
+if(js.includes("write")){
+    array.push("const write = require('write');")
+}
 if(js.includes("moment")){
     array.push(`let moment  = require("moment")`)
 }
@@ -154,6 +157,9 @@ if(js.includes("Regex")){
 }
   if(js.includes("progressbar")){
     array.push(`let progressbar = require('string-progressbar')`)
+}
+  if(js.includes("jimp")){
+    array.push(`let jimp = require('jimp')`)
 }
 if(js.includes("weirdToNormalChars")){
     array.push(`const { weirdToNormalChars } = require('weird-to-normal-chars')`)

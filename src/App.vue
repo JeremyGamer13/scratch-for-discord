@@ -125,6 +125,10 @@ import "./blocks/better_music/"
 //its me retro :v
 import "./blocks/weky/"
 import "./blocks/temp_channels"
+//gaming
+import "./blocks/JeremyGamer13/"
+import "./blocks/JeremyGamer13/jimpBlocks"
+import "./blocks/JeremyGamer13/fileEdit"
 
 import Theme from '@blockly/theme-modern';
 
@@ -169,8 +173,8 @@ export default {
                 zoom: {
                     controls: true,
                     startScale: 0.9,
-                    maxScale: 3,
-                    minScale: 0.3,
+                    maxScale: 10,
+                    minScale: 0.05,
                     scaleSpeed: 1.2
                 }
             },

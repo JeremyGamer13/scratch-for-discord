@@ -440,6 +440,31 @@ export default (Blockly, value) => {
         </category>
         <sep class="bt"/>
 
+          <category name="JeremyGamer13" colour="#FFAA00">
+            <block type="jg_beginJimp"/>
+            <block type="jg_saveJimpageAs"/>
+            <block type="jg_sendImage"/>
+            <block type="jg_null"/>
+            <block type="jg_undefined"/>
+            <category name="Jimp Effects" colour="#a81313">
+            <block type="jg_jimp_drawtext"/>
+            <block type="jg_jimp_brightnesscontrast"/>
+            <block type="jg_jimp_grayscale"/>
+            <block type="jg_jimp_invert"/>
+            <block type="jg_jimp_sepia"/>
+            <block type="jg_jimp_resize"/>
+            <block type="jg_jimp_scale"/>
+            <block type="jg_jimp_crop"/>
+            <block type="jg_jimp_flip"/>
+            <block type="jg_jimp_rotate"/>
+            <block type="jg_jimp_jpgqual"/>
+            </category>
+            <category name="File Editing" colour="#FFCC00">
+            <block type="jg_file_create"/>
+            <block type="jg_file_contents"/>
+            </category>
+          </category>
+
           <category name="henpokpok" colour="#64C9FF">
           <category name="Timeout" colour="#FF6464">
           <block type="mute_ahq"/>
@@ -456,8 +481,6 @@ export default (Blockly, value) => {
         </category>
        
         <category name="ahq" colour="#ff0000">
-        <block type="server_file"/>
-        <block type="s4d_history"/>
         <block type="snd_ahq"/>
         <block type="ahq_value_snd"/>
         <category name="member" colour="#006600">
