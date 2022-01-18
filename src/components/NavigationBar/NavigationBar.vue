@@ -1,8 +1,8 @@
 <template>
-    <b-navbar toggleable="lg" type="dark" style="background-color:#161719;user-select:none;" id="navbar nav-main">
+    <b-navbar toggleable="lg" type="dark" style="background-color:#420069;user-select:none;" id="navbar nav-main">
         <b-navbar-brand>
-            <img src="scratch.png" width="40" draggable="false">
-            Scratch For Discord
+            <img src="scratchEdit.png" width="40" draggable="false">
+            S4D - JT Platform
         </b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -18,11 +18,11 @@
                 <preBuilds></preBuilds>
                 <TokenModal></TokenModal>
                 <Socials></Socials>
-                <b-nav-item href="https://androz2091.gitbook.io/scratch-for-discord/" target="_blank">{{ $t('help') }}</b-nav-item>
+                <b-nav-item href="https://sites.google.com/view/s4d-jt/home" target="_blank">{{ $t('help') }}</b-nav-item>
                 <Credit></Credit>
             </b-navbar-nav>
             <b-navbar-nav class="ml-auto">
-                <b-button style="border-right-color: #161719; border-radius: 0em; border-top-left-radius: 0.25em; border-bottom-left-radius: 0.25em">
+                <b-button style="border-right-color: #420069; border-radius: 0em; border-top-left-radius: 0.25em; border-bottom-left-radius: 0.25em">
                 <span contenteditable="true" id="docName">{{ $t("untitled") }}</span>
                 </b-button>
                 <b-button id="v-step-2" :disabled="!configurationValidated" style="border-radius: 0em; border-top-right-radius: 0.25em; border-bottom-right-radius: 0.25em" @click="exportToCode">
@@ -124,14 +124,7 @@ console.log(\`
                 ╚█████╗░██╔╝░██║██║░░██║
                 ░╚═══██╗███████║██║░░██║
                 ██████╔╝╚════██║██████╔╝
-                ╚═════╝░░░░░░╚═╝╚═════╝░
-
-                ░░██╗██╗░█████╗░░█████╗░
-                ░██╔╝██║██╔═══╝░██╔══██╗
-                ██╔╝░██║██████╗░╚██████║
-                ███████║██╔══██╗░╚═══██║
-                ╚════██║╚█████╔╝░█████╔╝
-                ░░░░░╚═╝░╚════╝░░╚════╝░\`)
+                ╚═════╝░░░░░░╚═╝╚═════╝░\`)
 console.log(\`
 ██████╗░░█████╗░░█████╗░████████╗██╗███╗░░██╗░██████╗░░░░░░░░░░
 ██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██║████╗░██║██╔════╝░░░░░░░░░░
@@ -151,23 +144,13 @@ load()`);
 async function load(){
 console.log(\`
 entering BIOS please wait....\`)
-await delay(3600)
-console.clear()
-await delay(500)
 console.log(\`
                 ░██████╗░░██╗██╗██████╗░
                 ██╔════╝░██╔╝██║██╔══██╗
                 ╚█████╗░██╔╝░██║██║░░██║
                 ░╚═══██╗███████║██║░░██║
                 ██████╔╝╚════██║██████╔╝
-                ╚═════╝░░░░░░╚═╝╚═════╝░
-
-                ░░██╗██╗░█████╗░░█████╗░
-                ░██╔╝██║██╔═══╝░██╔══██╗
-                ██╔╝░██║██████╗░╚██████║
-                ███████║██╔══██╗░╚═══██║
-                ╚════██║╚█████╔╝░█████╔╝
-                ░░░░░╚═╝░╚════╝░░╚════╝░\`)
+                ╚═════╝░░░░░░╚═╝╚═════╝░\`)
 console.log(\`
 ██████╗░░█████╗░░█████╗░████████╗██╗███╗░░██╗░██████╗░░░░░░░░░░
 ██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██║████╗░██║██╔════╝░░░░░░░░░░
@@ -175,8 +158,6 @@ console.log(\`
 ██╔══██╗██║░░██║██║░░██║░░░██║░░░██║██║╚████║██║░░╚██╗░░░░░░░░░
 ██████╦╝╚█████╔╝╚█████╔╝░░░██║░░░██║██║░╚███║╚██████╔╝██╗██╗██╗
 ╚═════╝░░╚════╝░░╚════╝░░░░╚═╝░░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝╚═╝╚═╝\`)
-await delay(3500)
-console.clear()
 console.log(\`𝕔𝕠𝕕𝕖 𝕝𝕠𝕒𝕕𝕖𝕕\`)
 require("./bot")
 }

@@ -7,6 +7,7 @@
       <b-dropdown-item @click="load('aki')">{{ $t('examples.aki') }}</b-dropdown-item>
         <b-dropdown-item @click="load('music')">{{ $t('examples.music') }}</b-dropdown-item>
         <b-dropdown-item @click="load('image-gen')">{{ $t('examples.image_gen') }}</b-dropdown-item>
+        <b-dropdown-item @click="load('imgedit')">{{ $t('examples.imgedit') }}</b-dropdown-item>
         <b-dropdown-item @click="load('economy')">{{ $t('examples.economy') }}</b-dropdown-item>
       <b-dropdown-item @click="load('backup')">{{ $t('examples.backup') }}</b-dropdown-item>
       <b-dropdown-item @click="load('random')">{{ $t('examples.random') }}</b-dropdown-item>
@@ -26,6 +27,7 @@ import bettercmd from "../../examples/bettercmd";
 import LevelingExample from "../../examples/leveling";
 import MusicExample from "../../examples/music";
 import ImageGen from "../../examples/image_gen";
+import ImageEdit from "../../examples/imgedit";
 import Economy from "../../examples/economy";
 import backup from "../../examples/backup";
 import random from "../../examples/random";
@@ -41,6 +43,7 @@ const examples = {
     "leveling": LevelingExample,
     "music":MusicExample,
     "image-gen": ImageGen,
+    "imgedit": ImageEdit,
     "economy": Economy,
   "backup": backup,
   "random": random,
