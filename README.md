@@ -1,7 +1,7 @@
 # [Scratch For Discord JT](https://scratch-for-discord-jt.jeremygamer13.repl.co/)
 
 # Note! Use the [Replit Site](https://replit.com/@JeremyGamer13/scratch-for-discord-jt) if you want to make a version off of S4D JT!!
-# The github is extremely outdated and will probably stay like that.
+## The github is extremely outdated and will probably stay like that.
 
 This is a fork from S4D 469, and is made to test out some blocks I want to try adding.
 
@@ -31,12 +31,12 @@ And you're done!
 
 ## Installation
 
-To run Scratch For Discord, follow these steps:
+To run Scratch For Discord JT, follow these steps:
 
-* Clone the project. Run `git clone https://github.com/Androz2091/scratch-for-discord`.
+* Clone the project. Open Replit and fork the replit.
 * Run `yarn install` to install project dependencies.
 * Run `yarn start` to start the development server.
-* Go to `http://localhost:3000`!
+* Go to the site linked above the console!
 
 ## How to set up your bot
 
