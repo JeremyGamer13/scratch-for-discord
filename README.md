@@ -1,5 +1,8 @@
 # [Scratch For Discord JT](https://scratch-for-discord-jt.jeremygamer13.repl.co/)
 
+# Note! Use the [Replit Site](https://replit.com/@JeremyGamer13/scratch-for-discord-jt) if you want to make a version off of S4D JT!!
+# The github is extremely outdated and will probably stay like that.
+
 This is a fork from S4D 469, and is made to test out some blocks I want to try adding.
 
 🐱 Make your Discord bot using Scratch blocks! [Scratch For Discord](https://scratch-for-discord-jt.jeremygamer13.repl.co/) is an advanced fork of [discord-blocks](https://discordblocks.leondrolio.com/). Thanks to [7coil](https://github.com/7coil) for their great work!
