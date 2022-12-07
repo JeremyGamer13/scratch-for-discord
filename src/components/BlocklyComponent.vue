@@ -14,6 +14,7 @@ import Blockly from "blockly";
 import swal from "sweetalert2";
 const blocklyModule = require("../blocks/blocklyModule");
 const customBlockModule = require("./NavigationBar/cbmodule");
+const JTProj = require("../tools/jtproj_reader")
 import { disableUnapplicable } from "../restrictions";
 import toolbox from "../toolbox";
 var renderer = "zelos";
@@ -1276,6 +1277,30 @@ Blockly.getMaainWorkspace().addChangeListener(blockCounter(Blockly.getMaainWorks
       tab_CodingArea.style.height = "100%"
       tab_CodingArea.style.color = "white"
       tabPicker.append(tab_CodingArea)
+      const codingAreaDiv = document.createElement("div");
+      codingAreaDiv.style.display = "none"
+      codingAreaDiv.style.flex = "0 0 85%"
+      codingAreaDiv.style.width = "85%";
+      codingAreaDiv.style.height = "720px";
+      inlineDiv.append(codingAreaDiv);
+      const codingArea__explanationTitle = document.createElement("p")
+      codingArea__explanationTitle.innerHTML = "You can choose to create your block with code if you prefer.<br>Code in JavaScript and use \"block\" to refer to the block, and set \"returning.value\" to a string of code."
+      codingAreaDiv.append(codingArea__explanationTitle)
+      const codingArea__variablesFunctions = document.createElement("textarea")
+      codingArea__variablesFunctions.style.width = "100%"
+      codingArea__variablesFunctions.style.height = "200px"
+      codingArea__variablesFunctions.placeholder = "Make some variables or functions..."
+      codingAreaDiv.append(codingArea__variablesFunctions)
+      const codingArea__initFunc = document.createElement("textarea")
+      codingArea__initFunc.style.width = "100%"
+      codingArea__initFunc.style.height = "200px"
+      codingArea__initFunc.placeholder = "Block Initialization code..."
+      codingAreaDiv.append(codingArea__initFunc)
+      const codingArea__exportFunc = document.createElement("textarea")
+      codingArea__exportFunc.style.width = "100%"
+      codingArea__exportFunc.style.height = "200px"
+      codingArea__exportFunc.placeholder = "Block Export code..."
+      codingAreaDiv.append(codingArea__exportFunc)
       const blocklyDiv = document.createElement("div");
       blocklyDiv.style.flex = "0 0 85%"
       blocklyDiv.style.width = "85%";
@@ -1312,6 +1337,16 @@ Blockly.getMaainWorkspace().addChangeListener(blockCounter(Blockly.getMaainWorks
         comments: false,
         toolbox: customBlockModule.toolbox,
       });
+      tab_BlockBuilder.onclick = () => {
+        insideBlockBuilderTab = true
+        blocklyDiv.style.display = ""
+        codingAreaDiv.style.display = "none"
+      }
+      tab_CodingArea.onclick = () => {
+        insideBlockBuilderTab = false
+        blocklyDiv.style.display = "none"
+        codingAreaDiv.style.display = ""
+      }
       const exportInitBlock = Blockly.Xml.domToBlock(Blockly.Xml.textToDom('<block type="jg_s4d_customBlocks_builder1_exportInit"/>'), customBlockWorkspace)
       exportInitBlock.setDeletable(false)
       const exportJavascriptBlock = Blockly.Xml.domToBlock(Blockly.Xml.textToDom('<block type="jg_s4d_customBlocks_builder1_exportJavascript"/>'), customBlockWorkspace)
@@ -1338,13 +1373,85 @@ Blockly.getMaainWorkspace().addChangeListener(blockCounter(Blockly.getMaainWorks
       createButton.innerHTML = "Create Block";
       createButton.onclick = () => {
         if (!insideBlockBuilderTab) {
-          // ...
+          const codeString = `${codingArea__variablesFunctions.value}
+_ \\COPY_ABOVE FUNCTIONS and VARIABLES\\ _
+_ \\INIT FUNC\\ _
+let ___S4DCB_rALLOW_block_FROM_JS_FUNC___ = this;
+(function(block) {
+  ${codingArea__initFunc.value}
+})(this);
+_ \\END INIT FUNC\\ _
+_ \\COPY_ABOVE FUNCTIONS and VARIABLES\\ _
+_ \\JS FUNC\\ _
+let ___S4DCB_rALLOW_block_FROM_JS_FUNC___ = block;
+(function(block) {
+  ${codingArea__exportFunc.value}
+})(block);
+_ \\END JS FUNC\\ _`
+          customBlockModule.createCustomBlock(customBlockModule.createCustomBlockID(blockNameInput.value), customBlockModule.stringToCustomBlockData(codeString));
+          console.log(codeString)
           return
         }
         customBlockModule.createCustomBlock(customBlockModule.createCustomBlockID(blockNameInput.value), customBlockModule.stringToCustomBlockData(Blockly.JavaScript.workspaceToCode(customBlockWorkspace)));
         console.log(Blockly.JavaScript.workspaceToCode(customBlockWorkspace))
       };
       buttonDiv.append(createButton);
+      const importProjectButton = menu.createDecoratedButton();
+      importProjectButton.style.margin = "0px"
+      importProjectButton.style.marginTop = "32px"
+      importProjectButton.style.width = "100%"
+      importProjectButton.innerHTML = "Load Project";
+      importProjectButton.onclick = () => {
+        const filePicker = document.createElement("input")
+        filePicker.style.display = "none"
+        filePicker.type = "file"
+        document.body.append(filePicker)
+        filePicker.click()
+        filePicker.onchange = () => {
+          JTProj.readFile(filePicker.files[0]).then(project => {
+            if (project.projectType != "block") return alert("This project is not a Block!")
+            const content = JSON.parse(project.content)
+            const xml = Blockly.Xml.textToDom(content.blocks)
+            Blockly.Xml.domToWorkspace(xml, customBlockWorkspace)
+            codingArea__variablesFunctions.value = content.code.variablesFunctions
+            codingArea__initFunc.value = content.code.init
+            codingArea__exportFunc.value = content.code.export
+            blockNameInput.value = project.projectName
+          }).catch(() => alert("Couldn't load the project. Is the file corrupted?"))
+          filePicker.remove()
+        }
+      }
+      buttonDiv.append(importProjectButton);
+      const exportProjectButton = menu.createDecoratedButton();
+      exportProjectButton.style.margin = "0px"
+      exportProjectButton.style.width = "100%"
+      exportProjectButton.innerHTML = "Export Project";
+      exportProjectButton.onclick = () => {
+        const project = JTProj.create({
+          projectName: String(blockNameInput.value),
+          projectType: "block",
+          projectAttributes: {},
+          content: JSON.stringify({
+            blocks: Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(customBlockWorkspace)),
+            code: {
+              variablesFunctions: String(codingArea__variablesFunctions.value),
+              init: String(codingArea__initFunc.value),
+              export: String(codingArea__exportFunc.value)
+            }
+          })
+        })
+        const blob = new Blob([project], {type:"application/jt-project"})
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement("a")
+        a.style.display = "none"
+        document.body.append(a)
+        a.href = url
+        a.download = "Block_" + blockNameInput.value + ".jtproj"
+        a.click()
+        a.remove()
+        URL.revokeObjectURL(url)
+      }
+      buttonDiv.append(exportProjectButton);
       const customBlockDeletorDiv = document.createElement("div")
       customBlockDeletorDiv.classList.add("s4d_customblocks_manager_deletor")
       let customBlocksInMemory = 0
@@ -2262,7 +2369,7 @@ body {
 .s4d_customblocks_manager_deletor {
   background-color: #0F1011;
   width: 12em;
-  height: 38em;
+  height: 35em;
   overflow: auto;
 }
 .s4d_customblocks_manager_deletor > button {

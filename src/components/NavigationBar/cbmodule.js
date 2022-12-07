@@ -1,4 +1,5 @@
 const Blockly = require("blockly")
+/* eslint-disable */
 const localforage = require("localforage")
 const registered = {}
 function handle(block) {
@@ -30,7 +31,13 @@ module.exports.createCustomBlock = (name, data) => {
     try {
         Blockly.Blocks[name] = {
             init: function () {
-                eval(data.blocks);
+                try {
+                    eval(data.blocks);
+                } catch (err) {
+                    this.setColour("#ff0000")
+                    this.setTooltip(String(err))
+                    this.jsonInit({ message0: String(name.substring(name.lastIndexOf("_") + 1, name.length)).replace(/[^A-Za-z0-9]/gmi, "_") + " | " + String(err).substring(0, String(err).indexOf(":")) })
+                }
             },
         };
         module.exports.bypassStrictModeRegister(name, data.javascript);
