@@ -944,37 +944,6 @@ Blockly.WorkspaceSvg.prototype.onMouseDown_ = function(e) {
       });
     });
 
-    if (
-      window.location.href.includes(
-        "deploy-preview-469--scratch-for-discord.netlify.app"
-      )
-    ) {
-      Blockly.ContextMenuRegistry.registry.register({
-        displayText: "Go to Vercel",
-        preconditionFn: function () {
-          return "enabled";
-        },
-        callback: function () {
-          window.location.href = "https://scratch-for-discord-469.vercel.app/";
-        },
-        scopeType: Blockly.ContextMenuRegistry.ScopeType.WORKSPACE,
-        id: "vercel",
-        weight: 0,
-      });
-
-      Blockly.ContextMenuRegistry.registry.register({
-        displayText: "Go to Vercel",
-        preconditionFn: function () {
-          return "enabled";
-        },
-        callback: function () {
-          window.location.href = "https://scratch-for-discord-469.vercel.app/";
-        },
-        scopeType: Blockly.ContextMenuRegistry.ScopeType.BLOCK,
-        id: "vercel2",
-        weight: 0,
-      });
-    }
 
     function blockCounter() {
       const ALLBLOCKS = workspace.getAllBlocks();

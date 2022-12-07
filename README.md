@@ -1,11 +1,8 @@
-# [Scratch For Discord JT](https://scratch-for-discord-jt.jeremygamer13.repl.co/)
-
-# Note! Use the [Replit Site](https://replit.com/@JeremyGamer13/scratch-for-discord-jt) if you want to make a version off of S4D JT!!
-## The github is extremely outdated and will probably stay like that.
+# [Scratch For Discord JT](https://scratch-for-discord-jt.vercel.app/)
 
 This is a fork from S4D 469, and is made to test out some blocks I want to try adding.
 
-🐱 Make your Discord bot using Scratch blocks! [Scratch For Discord](https://scratch-for-discord-jt.jeremygamer13.repl.co/) is an advanced fork of [discord-blocks](https://discordblocks.leondrolio.com/). Thanks to [7coil](https://github.com/7coil) for their great work!
+🐱 Make your Discord bot using Scratch blocks! [Scratch For Discord](https://scratch-for-discord.com/) is an advanced fork of [discord-blocks](https://discordblocks.leondrolio.com/). Thanks to [7coil](https://github.com/7coil) for their great work!
 
 S4D 469 is forked from [the original S4D](https://scratch-for-discord.netlify.app) made by Androz2091
 
@@ -17,10 +14,6 @@ S4D 469 is forked from [the original S4D](https://scratch-for-discord.netlify.ap
 * 🇫🇷 French is supported!
 * 📦 Android, MacOS, Windows and Linux apps
 
-## Example
-
-![example](./examples/example.png)
-
 ## Run On Repl.it
 
 You can run your bot on repl.it. To do so, click the download link at the top right corner of the website. Import these files in your repl.it project, and run the following commands in the "SHELL" tab:
@@ -31,25 +24,17 @@ And you're done!
 
 ## Installation
 
-To run Scratch For Discord JT, follow these steps:
+To run the Scratch For Discord JT website locally, follow these steps:
 
-* Clone the project. Open Replit and fork the replit.
+* Clone the project by creating a fork.
 * Run `yarn install` to install project dependencies.
+* Run `npm i --force` to correct any issues with dependencies.
 * Run `yarn start` to start the development server.
-* Go to the site linked above the console!
+* Go to the site linked in the console.
 
 ## How to set up your bot
 
 The discord.js guide has [instructions for setting up a bot application](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot). Once you've followed the instructions you can paste the bot token into the "Connect to Discord with token..." block. The next page in the guide shows how to invite the bot to a server.
-
-## Desktop Apps
-**[Click Here](https://androz2091.github.io/scratch-for-discord/download/index.html)** to download desktop version of **scratch-for-discord**.
-
-## Android App
-**[Google Play Store](https://play.google.com/store/apps/details?id=com.snowflakestudio.scratchfordiscord)**
-
-### Preview
-![preview](https://i.imgur.com/UJ2SKlc.png)
 
 ## Credits
 
