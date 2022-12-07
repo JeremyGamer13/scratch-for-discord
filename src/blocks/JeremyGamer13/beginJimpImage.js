@@ -10,14 +10,14 @@ const blockData = {
             "name": "beginJimp"
         },
         {
-        "type": "input_value", 
-        "name": "JimpURL",
-        "check": ["String","var"]
+            "type": "input_value",
+            "name": "JimpURL",
+            "check": ["String", "var"]
         },
         {
             "type": "input_dummy"
         }
-        
+
     ],
     "colour": "#DB0000",
     "previousStatement": null,
@@ -27,12 +27,14 @@ const blockData = {
 };
 
 Blockly.Blocks[blockName] = {
-    init: function() {
+    init: function () {
         this.jsonInit(blockData);
+        this.setColour("#ff0000")
+        this.setTooltip("This block is now unsupported. We recommend switching to a newer block found in the toolbox. - " + this.tooltip)
     }
 };
 
-Blockly.JavaScript[blockName] = function(block){
+Blockly.JavaScript[blockName] = function (block) {
     const JimpIMG = Blockly.JavaScript.valueToCode(block, "JimpURL", Blockly.JavaScript.ORDER_ATOMIC);
     const JimpCode = Blockly.JavaScript.statementToCode(block, "beginJimp");
     const code = `jimp.read(` + JimpIMG + `, (err, image) => {

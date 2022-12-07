@@ -19,3 +19,7 @@ import "./member_created_data";
 import "./unban_member";
 import "./member_exist";
 import "./member_nickname";
+import "./member_channel_perm";
+import "./member_dynamic_icon";
+import "./get_user_banner";
+import "./member_banner";

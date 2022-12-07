@@ -1,16 +1,8 @@
 import * as Blockly from "blockly";
 const blockName = "snd_ahq_button";
-const ahqcolor = ['#3366ff', '#FF10F0', '#33cc00', '#ff6666'];
-function listsGetRandomItem(list, remove) {
-    var x = Math.floor(Math.random() * list.length);
-    if (remove) {
-        return list.splice(x, 1)[0];
-    } else {
-        return list[x];
-    }
-}
+
 const blockData = {
-    "message0": "Send button on channel %1 %2 text %3 %4 button %5 %6 embed %7",
+    "message0": "send button on channel %1 %2 text %3 %4 button %5 %6 embed %7",
     "args0": [
         {
             "type": "input_value",
@@ -18,7 +10,7 @@ const blockData = {
             "check": ["Channel"]
         },
         {
-            "type": "input_space"
+            "type": "input_dummy"
         },
         {
             "type": "input_value",
@@ -26,7 +18,7 @@ const blockData = {
             "check": "String"
         },
         {
-            "type": "input_space"
+            "type": "input_dummy"
         },
         {
             "type": "input_value",
@@ -34,26 +26,26 @@ const blockData = {
             "check": "String"
         },
         {
-            "type": "input_space"
+            "type": "input_dummy"
         },
         {
             "type": "input_value",
             "name": "embed val",
-            "check": "ahq"
+            "check": ""
         },
 
     ],
-    "colour": listsGetRandomItem(ahqcolor, false),
+    "colour": '#33cc00',
     "previousStatement": null,
     "nextStatement": null,
 };
 
 Blockly.Blocks[blockName] = {
-    init: function() {
+    init: function () {
         this.jsonInit(blockData);
     }
 };
-Blockly.JavaScript[blockName] = function(block) {
+Blockly.JavaScript[blockName] = function (block) {
     let extra = "";
     const name = Blockly.JavaScript.valueToCode(block, "Label", Blockly.JavaScript.ORDER_NONE);
     const data = Blockly.JavaScript.valueToCode(block, "button name", Blockly.JavaScript.ORDER_NONE);

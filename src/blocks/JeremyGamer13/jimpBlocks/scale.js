@@ -12,10 +12,10 @@ const blockData = {
         {
             "type": "input_value",
             "name": "Scale",
-            "check": [ "Number", "var", "Env"]
+            "check": ["Number", "var", "Env"]
         }
     ],
-    "colour": "#a81313",
+    "colour": 260,
     "previousStatement": null,
     "nextStatement": null,
     "tooltip": "Scale the image by a number factor. Can only use Numbers, Variables, or Env secrets.",
@@ -23,14 +23,16 @@ const blockData = {
 };
 
 Blockly.Blocks[blockName] = {
-    init: function() {
+    init: function () {
         this.jsonInit(blockData);
+        this.setColour("#ff0000")
+        this.setTooltip("This block is now unsupported. We recommend switching to a newer block found in the toolbox. - " + this.tooltip)
     }
 };
 
-Blockly.JavaScript[blockName] = function(block) {
-  const scale = Blockly.JavaScript.valueToCode(block, "Scale", Blockly.JavaScript.ORDER_ATOMIC);
-    return `image.scale( Number(` + scale + `) )\n`;
+Blockly.JavaScript[blockName] = function (block) {
+    const scale = Blockly.JavaScript.valueToCode(block, "Scale", Blockly.JavaScript.ORDER_ATOMIC);
+    return `await image.scale( Number(` + scale + `) )\n`;
 }
 
 registerRestrictions(blockName, [

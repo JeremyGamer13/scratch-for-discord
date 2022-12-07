@@ -6,7 +6,7 @@ const blockName = "jg_jimp_invert";
 const blockData = {
     "message0": "Invert Effect",
     "args0": [],
-    "colour": "#1492cc",
+    "colour": 260,
     "previousStatement": null,
     "nextStatement": null,
     "tooltip": "Inverts the colors on the image.",
@@ -14,13 +14,15 @@ const blockData = {
 };
 
 Blockly.Blocks[blockName] = {
-    init: function() {
+    init: function () {
         this.jsonInit(blockData);
+        this.setColour("#ff0000")
+        this.setTooltip("This block is now unsupported. We recommend switching to a newer block found in the toolbox. - " + this.tooltip)
     }
 };
 
-Blockly.JavaScript[blockName] = function() {
-    return `image.invert()\n`;
+Blockly.JavaScript[blockName] = function () {
+    return `await image.invert()\n`;
 }
 
 registerRestrictions(blockName, [

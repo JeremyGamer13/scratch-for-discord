@@ -13,7 +13,7 @@ const blockData = {
         {
             "type": "input_value",
             "name": "MEMBER",
-            "check": ["String","Number"]
+            "check": ["User","Member"]
         }
     ],
     "previousStatement": null,
@@ -30,16 +30,10 @@ Blockly.Blocks[blockName] = {
 };
 
 Blockly.JavaScript[blockName] = function(block) {
+
     const memberr = Blockly.JavaScript.valueToCode(block, "MEMBER", Blockly.JavaScript.ORDER_ATOMIC);
-    let member = memberr.replace(".user","")
     const server = Blockly.JavaScript.valueToCode(block, "SERVER", Blockly.JavaScript.ORDER_ATOMIC);
-    const code = `${server}.fetchBans().then(bans=> {
-        if(bans.size != 0) {
-        let bUser = bans.find(b => b.user.id == ${member})
-        if(bUser){
-        ${server}.members.unban(bUser.user)
-        }
-    }
-  })\n`;
+    const code = `${server}.members.unban(${memberr})\n`;
     return code;
 };
+

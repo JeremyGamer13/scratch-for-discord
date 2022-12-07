@@ -6,7 +6,7 @@ const blockName = "jg_jimp_sepia";
 const blockData = {
     "message0": "Sepia Effect",
     "args0": [],
-    "colour": "#660000",
+    "colour": 260,
     "previousStatement": null,
     "nextStatement": null,
     "tooltip": "Adds a warm brown color on the image.",
@@ -14,13 +14,15 @@ const blockData = {
 };
 
 Blockly.Blocks[blockName] = {
-    init: function() {
+    init: function () {
         this.jsonInit(blockData);
+        this.setColour("#ff0000")
+        this.setTooltip("This block is now unsupported. We recommend switching to a newer block found in the toolbox. - " + this.tooltip)
     }
 };
 
-Blockly.JavaScript[blockName] = function() {
-    return `image.sepia()\n`;
+Blockly.JavaScript[blockName] = function () {
+    return `await image.sepia()\n`;
 }
 
 registerRestrictions(blockName, [

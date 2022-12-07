@@ -13,7 +13,7 @@ const blockData = {
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "colour": "#5ba58b",
+    "colour": "#50a153",
     "helpUrl": ""
 };
 
@@ -25,5 +25,5 @@ Blockly.Blocks[blockName] = {
 
 Blockly.JavaScript[blockName] = function(block) {
     const key = Blockly.JavaScript.valueToCode(block, "KEY", Blockly.JavaScript.ORDER_ATOMIC);
-    return `dootabase.delete(String(${key}));\n`;
+    return `dootabase.del(String(${key}));\n`;
 };

@@ -13,43 +13,45 @@ const blockData = {
         {
             "type": "input_value",
             "name": "X",
-            "check": [ "Number", "var", "Env"]
+            "check": ["Number", "var", "Env"]
         },
         {
             "type": "input_value",
             "name": "Y",
-            "check": [ "Number", "var", "Env"]
+            "check": ["Number", "var", "Env"]
         },
         {
             "type": "input_value",
             "name": "Width",
-            "check": [ "Number", "var", "Env"]
+            "check": ["Number", "var", "Env"]
         },
         {
             "type": "input_value",
             "name": "Height",
-            "check": [ "Number", "var", "Env"]
+            "check": ["Number", "var", "Env"]
         }
     ],
-    "colour": "#a81313",
+    "colour": 260,
     "previousStatement": null,
     "nextStatement": null,
-    "tooltip": "Crop the image at a specific point and using a Width and Height. Can only use Numbers, Variables, or Env secrets. Please use the Convert text to number block here!",
+    "tooltip": "Crop the image at a specific point and using a Width and Height. Can only use Numbers, Variables, or Env secrets.",
     "helpUrl": ""
 };
 
 Blockly.Blocks[blockName] = {
-    init: function() {
+    init: function () {
         this.jsonInit(blockData);
+        this.setColour("#ff0000")
+        this.setTooltip("This block is now unsupported. We recommend switching to a newer block found in the toolbox. - " + this.tooltip)
     }
 };
 
-Blockly.JavaScript[blockName] = function(block) {
-  const xpos = Blockly.JavaScript.valueToCode(block, "X", Blockly.JavaScript.ORDER_ATOMIC);
-  const ypos = Blockly.JavaScript.valueToCode(block, "Y", Blockly.JavaScript.ORDER_ATOMIC);
-  const wide = Blockly.JavaScript.valueToCode(block, "Width", Blockly.JavaScript.ORDER_ATOMIC);
-  const high = Blockly.JavaScript.valueToCode(block, "Height", Blockly.JavaScript.ORDER_ATOMIC);
-    return `image.crop( Number(` + xpos + `), Number(` + ypos + `), Number(` + wide + `), Number(` + high + `))\n`;
+Blockly.JavaScript[blockName] = function (block) {
+    const xpos = Blockly.JavaScript.valueToCode(block, "X", Blockly.JavaScript.ORDER_ATOMIC);
+    const ypos = Blockly.JavaScript.valueToCode(block, "Y", Blockly.JavaScript.ORDER_ATOMIC);
+    const wide = Blockly.JavaScript.valueToCode(block, "Width", Blockly.JavaScript.ORDER_ATOMIC);
+    const high = Blockly.JavaScript.valueToCode(block, "Height", Blockly.JavaScript.ORDER_ATOMIC);
+    return `await image.crop( Number(` + xpos + `), Number(` + ypos + `), Number(` + wide + `), Number(` + high + `))\n`;
 }
 
 registerRestrictions(blockName, [

@@ -4,15 +4,15 @@ import { registerRestrictions } from "../../restrictions";
 const blockName = "jg_saveJimpageAs";
 
 const blockData = {
-    "message0": "Save Jimp Image as %1",
+    "message0": "Save Image as %1",
     "args0": [
-      {
+        {
             "type": "input_value",
             "name": "CONTENT",
-            "check": [ "Number", "String", "var", "Env"]
+            "check": ["Number", "String", "var", "Env"]
         }
     ],
-    "colour": "#a81313",
+    "colour": 260,
     "previousStatement": null,
     "nextStatement": null,
     "tooltip": "The file name of the Jimp image output. Be careful with this though, this saves as an actual file on your bot!",
@@ -20,14 +20,16 @@ const blockData = {
 };
 
 Blockly.Blocks[blockName] = {
-    init: function() {
+    init: function () {
         this.jsonInit(blockData);
+        this.setColour("#ff0000")
+        this.setTooltip("This block is now unsupported. We recommend switching to a newer block found in the toolbox. - " + this.tooltip)
     }
 };
 
-Blockly.JavaScript[blockName] = function(block) {
-  const fileName = Blockly.JavaScript.valueToCode(block, "CONTENT", Blockly.JavaScript.ORDER_ATOMIC);
-    return `image.write(` + fileName + `);`;
+Blockly.JavaScript[blockName] = function (block) {
+    const fileName = Blockly.JavaScript.valueToCode(block, "CONTENT", Blockly.JavaScript.ORDER_ATOMIC);
+    return `await image.writeAsync(` + fileName + `);`;
 }
 
 registerRestrictions(blockName, [
@@ -35,7 +37,7 @@ registerRestrictions(blockName, [
         type: "notempty",
         message: "RES_MISSING_CONTENT_GEN",
         types: [
-          "CONTENT"
+            "CONTENT"
         ]
     },
     {

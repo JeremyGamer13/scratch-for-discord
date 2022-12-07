@@ -16,3 +16,12 @@ import "./reply_message";
 import "./reply_mentioned_channel";
 import "./reply_mentioned_member";
 import "./reply_mentioned_role";
+import "./get_all_channel_channel_name"
+import "./ahq_channel_name"
+import "./id_of_channel"
+import "./guild_of_channel"
+import "./id_of_channel_parent"
+import "./id_of_last_message"
+import "./topic_of_channel"
+import "./set_afk_channel"
+import "./set_afk_channel_time"

@@ -8,23 +8,23 @@ const blockData = {
         {
             "type": "input_value",
             "name": "UNIX",
-            "check":  "Number" 
+            "check": "Number"
         },
     ],
     "output": "Number",
-    "colour": "#5ba58b",
-    "tooltip": "",
+    "colour": "#D14081",
+    "tooltip": "Convert a UNIX timestamp to a date.",
     "helpUrl": ""
 };
 
 Blockly.Blocks[blockName] = {
-    init: function() {
+    init: function () {
         this.jsonInit(blockData);
     }
 };
 
-Blockly.JavaScript[blockName] = function(block) {
+Blockly.JavaScript[blockName] = function (block) {
     const unix = Blockly.JavaScript.valueToCode(block, "UNIX", Blockly.JavaScript.ORDER_ATOMIC);
-    let code = `new Date(${unix} * 1000);`
+    let code = [`new Date(${unix} * 1000)`, Blockly.JavaScript.ORDER_NONE];
     return code
 };

@@ -80,7 +80,6 @@ export const websiteMessages = {
         button: "Butão e lista de butão",
         music: "exemplo de blocos de musica",
       image_gen: "Exemplo de gerador de imagem",
-      imgedit: "(JIMP) Exemplo de edição de imagem",
         economy: "Exemplo de economia",
           aki: "Exemplo de Akinator",
       backup: "Exemplo de backup",

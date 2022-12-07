@@ -7,9 +7,9 @@ const blockData = {
     "message0": "Get random reddit post from r/%1 then %2 %3",
     "args0": [
         {
-            "type":"input_value",
-            "name":"MESSAGE",
-            "check": [ "Number", "String" ]
+            "type": "input_value",
+            "name": "MESSAGE",
+            "check": ["Number", "String"]
         },
         {
             "type": "input_dummy"
@@ -26,25 +26,17 @@ const blockData = {
 
 
 Blockly.Blocks[blockName] = {
-    init: function() {
+    init: function () {
         this.jsonInit(blockData);
     }
 };
 
-Blockly.JavaScript[blockName] = function(block){
+Blockly.JavaScript[blockName] = function (block) {
     const message = Blockly.JavaScript.valueToCode(block, "MESSAGE", Blockly.JavaScript.ORDER_ATOMIC);
     const statementThen = Blockly.JavaScript.statementToCode(block, "THEN");
     return `
-    const musakui = require('musakui');
-    musakui(${message})
-  .then(result => {
-  var postTitle = result.title
-  var postUrl = result.reddit_url
-  var postImg = result.media_url
-  var postUpvotes = result.upvotes
-  var postComs = result.comments
+S4D_APP_REDDIT_musakui(${message}).then(async (result) => {
    ${statementThen}
- })
-  .catch(error => console.log(error));
+}).catch(error => console.log(error));
 `;
 };

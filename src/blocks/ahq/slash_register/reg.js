@@ -1,13 +1,5 @@
 import * as Blockly from "blockly/core";
-const ahqcolor = ['#3366ff', '#FF10F0', '#33cc00', '#ff6666'];
-function listsGetRandomItem(list, remove) {
-    var x = Math.floor(Math.random() * list.length);
-    if (remove) {
-        return list.splice(x, 1)[0];
-    } else {
-        return list[x];
-    }
-}
+
 const blockName = "s4d_reg_slash";
 //block working now working
 const blockData = {
@@ -34,7 +26,7 @@ const blockData = {
             "name": "THEN"
         }
     ],
-    "colour": listsGetRandomItem(ahqcolor, false),
+    "colour": '#33cc00',
     "previousStatement": null,
     "nextStatement": null,
 };
@@ -53,6 +45,6 @@ Blockly.JavaScript[blockName] = function(block){
         name: ${server},
         description: ${des},
         options: [${statementThen}]        
-    })`;
+    });`;
     return code;
 };

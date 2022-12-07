@@ -4,65 +4,67 @@ import { registerRestrictions } from "../../../restrictions";
 const blockName = "jg_jimp_brightnesscontrast";
 
 const blockData = {
-    "message0": "Change %1 effect on image by %2",
-    "args0": [
-        {
-            "type": "field_dropdown",
-            "name": "type",
-            "options": [
-              [
-                "brightness",
-                '"brightness"'
-              ],
-              [
-                "contrast",
-                '"contrast"'
-              ],
-              [
-                "color",
-                '"color"'
-              ]
-            ]
-        },
-        {
-            "type": "input_value",
-            "name": "amount",
-            "check": [ "Number", "var", "Env"]
-        }
-    ],
-    "colour": "#a600ff",
-    "previousStatement": null,
-    "nextStatement": null,
-    "tooltip": "Changes the brightness or contrast on the image by -100 to 100. Color effects change the color by -360 to 360.",
-    "helpUrl": ""
+  "message0": "Change %1 effect on image by %2",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "type",
+      "options": [
+        [
+          "brightness",
+          '"brightness"'
+        ],
+        [
+          "contrast",
+          '"contrast"'
+        ],
+        [
+          "color",
+          '"color"'
+        ]
+      ]
+    },
+    {
+      "type": "input_value",
+      "name": "amount",
+      "check": ["Number", "var", "Env"]
+    }
+  ],
+  "colour": 260,
+  "previousStatement": null,
+  "nextStatement": null,
+  "tooltip": "Changes the brightness or contrast on the image by -100 to 100. Color effects change the color by -360 to 360.",
+  "helpUrl": ""
 };
 
 Blockly.Blocks[blockName] = {
-    init: function() {
-        this.jsonInit(blockData);
-    }
+  init: function () {
+    this.jsonInit(blockData);
+    this.setColour("#ff0000")
+    this.setTooltip("This block is now unsupported. We recommend switching to a newer block found in the toolbox. - " + this.tooltip)
+  }
 };
 
-Blockly.JavaScript[blockName] = function(block) {
+Blockly.JavaScript[blockName] = function (block) {
   const type = block.getFieldValue("type");
   const amount = Blockly.JavaScript.valueToCode(block, "amount", Blockly.JavaScript.ORDER_ATOMIC);
   if ((String(type) === '"brightness"')) {
-    return `image.brightness( (` + amount + ` / 100) )\n`;
+    return `await image.brightness( (` + amount + ` / 100) )\n`;
   } else if ((String(type) === '"contrast"')) {
-    return `image.contrast((` + amount + ` / 100))\n`;
+    return `await image.contrast((` + amount + ` / 100))\n`;
   } else {
-    return `image.color([
+    return `await image.color([
   { apply: 'hue', params: [` + amount + `] }
 ]);\n`;
   }
 }
 
 registerRestrictions(blockName, [
-    {
-        type: "hasparent",
-        message: "RES_JGSAVEIMAGE",
-        types: [
-            "jg_beginJimp"
-        ]
-    }
+  {
+    type: "hasparent",
+    message: "RES_JGSAVEIMAGE",
+    types: [
+      "jg_beginJimp"
+    ]
+  }
 ]);

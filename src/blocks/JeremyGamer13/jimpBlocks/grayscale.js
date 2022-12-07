@@ -6,7 +6,7 @@ const blockName = "jg_jimp_grayscale";
 const blockData = {
     "message0": "Grayscale Effect",
     "args0": [],
-    "colour": "#a6a6a6",
+    "colour": 260,
     "previousStatement": null,
     "nextStatement": null,
     "tooltip": "Adds a grayscale effect to the image.",
@@ -14,13 +14,15 @@ const blockData = {
 };
 
 Blockly.Blocks[blockName] = {
-    init: function() {
+    init: function () {
         this.jsonInit(blockData);
+        this.setColour("#ff0000")
+        this.setTooltip("This block is now unsupported. We recommend switching to a newer block found in the toolbox. - " + this.tooltip)
     }
 };
 
-Blockly.JavaScript[blockName] = function() {
-    return `image.greyscale()\n`;
+Blockly.JavaScript[blockName] = function () {
+    return `await image.greyscale()\n`;
 }
 
 registerRestrictions(blockName, [

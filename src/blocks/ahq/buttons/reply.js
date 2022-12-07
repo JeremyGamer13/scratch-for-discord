@@ -1,19 +1,11 @@
 import * as Blockly from "blockly";
 const blockName = "rply_ahq_button";
-const ahqcolor = ['#3366ff', '#FF10F0', '#33cc00', '#ff6666'];
-function listsGetRandomItem(list, remove) {
-    var x = Math.floor(Math.random() * list.length);
-    if (remove) {
-        return list.splice(x, 1)[0];
-    } else {
-        return list[x];
-    }
-}
+
 const blockData = {
-    "message0": "Reply %1 %2 %3 ephemeral %4 %5 button %6 %7 embed %8",
+    "message0": "reply %1 %2 %3 ephemeral %4 %5 button %6 %7 embed %8",
     "args0": [
         {
-            "type": "input_space"
+            "type": "input_dummy"
         },
         {
             "type": "input_value",
@@ -21,7 +13,7 @@ const blockData = {
             "check": ["String", "Integer"]
         },
         {
-            "type": "input_space"
+            "type": "input_dummy"
         },
         {
             "type": "input_value",
@@ -29,7 +21,7 @@ const blockData = {
             "check": "Boolean"
         },
         {
-            "type": "input_space"
+            "type": "input_dummy"
         },
         {
             "type": "input_value",
@@ -37,25 +29,25 @@ const blockData = {
             "check": "String"
         },
         {
-            "type": "input_space"
+            "type": "input_dummy"
         },
         {
             "type": "input_value",
             "name": "embed val",
-            "check": "ahq"
+            "check": ""
         },
     ],
-    "colour": listsGetRandomItem(ahqcolor, false),
+    "colour": '#33cc00',
     "previousStatement": null,
     "nextStatement": null,
 };
 
 Blockly.Blocks[blockName] = {
-    init: function() {
+    init: function () {
         this.jsonInit(blockData);
     }
 };
-Blockly.JavaScript[blockName] = function(block) {
+Blockly.JavaScript[blockName] = function (block) {
     var ahq = ``;
     let extra = "";
     const data = Blockly.JavaScript.valueToCode(block, "Label", Blockly.JavaScript.ORDER_NONE);

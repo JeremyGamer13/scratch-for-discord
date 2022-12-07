@@ -12,15 +12,15 @@ const blockData = {
         {
             "type": "input_value",
             "name": "Width",
-            "check": [ "Number", "var", "Env"]
+            "check": ["Number", "var", "Env"]
         },
         {
             "type": "input_value",
             "name": "Height",
-            "check": [ "Number", "var", "Env"]
+            "check": ["Number", "var", "Env"]
         }
     ],
-    "colour": "#a81313",
+    "colour": 260,
     "previousStatement": null,
     "nextStatement": null,
     "tooltip": "Resize the image to a specific Width and Height. Can only use Numbers, Variables, or Env secrets.",
@@ -28,15 +28,17 @@ const blockData = {
 };
 
 Blockly.Blocks[blockName] = {
-    init: function() {
+    init: function () {
         this.jsonInit(blockData);
+        this.setColour("#ff0000")
+        this.setTooltip("This block is now unsupported. We recommend switching to a newer block found in the toolbox. - " + this.tooltip)
     }
 };
 
-Blockly.JavaScript[blockName] = function(block) {
-  const wide = Blockly.JavaScript.valueToCode(block, "Width", Blockly.JavaScript.ORDER_ATOMIC);
-  const high = Blockly.JavaScript.valueToCode(block, "Height", Blockly.JavaScript.ORDER_ATOMIC);
-    return `image.resize( Number(` + wide + `), Number(` + high + `))\n`;
+Blockly.JavaScript[blockName] = function (block) {
+    const wide = Blockly.JavaScript.valueToCode(block, "Width", Blockly.JavaScript.ORDER_ATOMIC);
+    const high = Blockly.JavaScript.valueToCode(block, "Height", Blockly.JavaScript.ORDER_ATOMIC);
+    return `await image.resize( Number(` + wide + `), Number(` + high + `))\n`;
 }
 
 registerRestrictions(blockName, [

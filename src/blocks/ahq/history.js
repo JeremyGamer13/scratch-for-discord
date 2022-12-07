@@ -1,30 +1,22 @@
 import * as Blockly from "blockly/core";
-const ahqcolor = ['#3366ff', '#FF10F0', '#33cc00', '#ff6666'];
-function listsGetRandomItem(list, remove) {
-    var x = Math.floor(Math.random() * list.length);
-    if (remove) {
-        return list.splice(x, 1)[0];
-    } else {
-        return list[x];
-    }
-}
+
 const blockName = "s4d_history";
 //block working now working
 const blockData = {
     "message0": "History of s4d!",
-    "colour": listsGetRandomItem(ahqcolor, false),
+    "colour": '#40BF4A',
     "output": "String",
-    "tooltip": "",
+    "tooltip": ":troll:",
     "helpUrl": ""
 };
 
 
 Blockly.Blocks[blockName] = {
-    init: function() {
+    init: function () {
         this.jsonInit(blockData);
     }
 };
-Blockly.JavaScript[blockName] = function(){
+Blockly.JavaScript[blockName] = function () {
     const code = [`\`s4d means scratch for discord
     s4d was created mainly by \\\`Androz\\\`
     The Devs of the current preview \\\`469\\\` are:-

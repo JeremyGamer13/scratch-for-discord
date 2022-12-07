@@ -6,7 +6,7 @@ const blockData = {
     "message0": "%{BKY_GIVEAWAY_ID}",
     "colour": "#187795",
     "output": "String",
-    "tooltip": "",
+    "tooltip": "The Message ID of the Giveaway you just created.",
     "helpUrl": ""
 };
 
@@ -17,6 +17,6 @@ Blockly.Blocks[blockName] = {
 };
 
 Blockly.JavaScript[blockName] = function() {
-    const code = ["gData.id", Blockly.JavaScript.ORDER_NONE];
+    const code = ["gData.message.id", Blockly.JavaScript.ORDER_NONE];
     return code;
 };

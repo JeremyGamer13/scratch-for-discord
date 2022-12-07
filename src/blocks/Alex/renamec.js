@@ -22,7 +22,7 @@ const blockData = {
   "previousStatement": null,
   "nextStatement": null, 
   "colour": "#0c97f0",
-  "tooltip": "",
+  "tooltip": "Rename a channel",
   "helpUrl": ""
 }
 
@@ -35,6 +35,7 @@ Blockly.Blocks[blockName] = {
 Blockly.JavaScript[blockName] = function(block) {
 const cn = Blockly.JavaScript.valueToCode(block, "channel", Blockly.JavaScript.ORDER_ATOMIC);
 const nn = Blockly.JavaScript.valueToCode(block, "name", Blockly.JavaScript.ORDER_ATOMIC);
-    const code = `${cn}.setName(${nn})`;
+    const code = `${cn}.setName(${nn})
+    `;
     return code;
 };

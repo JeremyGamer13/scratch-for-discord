@@ -1,30 +1,47 @@
 import * as Blockly from "blockly/core";
-const ahqcolor = ['#3366ff', '#FF10F0', '#33cc00', '#ff6666'];
-function listsGetRandomItem(list, remove) {
-    var x = Math.floor(Math.random() * list.length);
-    if (remove) {
-        return list.splice(x, 1)[0];
-    } else {
-        return list[x];
-    }
-}
+
 const blockName = "s4d_get_rndmber";
 //block working now working
 const blockData = {
     "message0": "random member",
-    "colour": listsGetRandomItem(ahqcolor, false),
+    "colour": '#40BF4A',
     "output": "Member",
-    "tooltip": "",
+    "tooltip": "Gets a random member from the server.",
     "helpUrl": ""
 };
 
 
 Blockly.Blocks[blockName] = {
-    init: function() {
+    init: function () {
         this.jsonInit(blockData);
     }
 };
-Blockly.JavaScript[blockName] = function(){
+Blockly.JavaScript[blockName] = function () {
     const code = ['randomUser.user', Blockly.JavaScript.ORDER_NONE];
+    return code;
+};
+Blockly.Blocks["ahq_members_get_random_member_in_server"] = {
+    init: function () {
+        this.jsonInit(
+            {
+                "message0": "random member in server %1",
+                "args0": [
+                    {
+                        "type": "input_value",
+                        "name": "SERVER",
+                        "check": "Server"
+                    }
+                ],
+                "colour": "#187795",
+                "output": "Member",
+                "tooltip": "Get a random member from a server.",
+                "helpUrl": ""
+            }
+        );
+    }
+};
+Blockly.JavaScript["ahq_members_get_random_member_in_server"] = function (block) {
+    const server = Blockly.JavaScript.valueToCode(block, "SERVER", Blockly.JavaScript.ORDER_ATOMIC);
+    const code = [`${server}.members.cache.random().user`, Blockly.JavaScript.ORDER_NONE];
     return code;
 };

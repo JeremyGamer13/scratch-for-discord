@@ -9,24 +9,24 @@ const blockData = {
         {
             "type": "input_value",
             "name": "Rotate",
-            "check": [ "Number", "var", "Env"]
+            "check": ["Number", "var", "Env"]
         },
         {
             "type": "field_dropdown",
             "name": "autoResize",
             "options": [
-              [
-                "automatically resize",
-                'true'
-              ],
-              [
-                "do not automatically resize",
-                'false'
-              ]
+                [
+                    "automatically resize",
+                    'true'
+                ],
+                [
+                    "do not automatically resize",
+                    'false'
+                ]
             ]
         }
     ],
-    "colour": "#a81313",
+    "colour": 260,
     "previousStatement": null,
     "nextStatement": null,
     "tooltip": "Rotate the image clockwise a certain amount of degrees, and you can choose whether to automatically resize the image to fit the rotation, or not to. Can only use Numbers, Variables, or Env secrets.",
@@ -34,15 +34,17 @@ const blockData = {
 };
 
 Blockly.Blocks[blockName] = {
-    init: function() {
+    init: function () {
         this.jsonInit(blockData);
+        this.setColour("#ff0000")
+        this.setTooltip("This block is now unsupported. We recommend switching to a newer block found in the toolbox. - " + this.tooltip)
     }
 };
 
-Blockly.JavaScript[blockName] = function(block) {
-  const degrees = Blockly.JavaScript.valueToCode(block, "Rotate", Blockly.JavaScript.ORDER_ATOMIC);
-  const autoResize = block.getFieldValue("autoResize");
-    return `image.rotate( Number(` + degrees + `), ` + autoResize + ` )\n`;
+Blockly.JavaScript[blockName] = function (block) {
+    const degrees = Blockly.JavaScript.valueToCode(block, "Rotate", Blockly.JavaScript.ORDER_ATOMIC);
+    const autoResize = block.getFieldValue("autoResize");
+    return `await image.rotate( Number(` + degrees + `), ` + autoResize + ` )\n`;
 }
 
 registerRestrictions(blockName, [

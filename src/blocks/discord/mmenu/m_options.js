@@ -12,22 +12,22 @@ const blockData = {
             "options": [
                 [
                     "message",
-                    "Message"
+                    "interaction.options.getMessage('message')"
                 ],
                 [
                     "user",
-                    "User"
+                    "interaction.targetUser"
                 ],
                 [
                     "member",
-                    "Member"
+                    "interaction.targetMember"
                 ],
 
             ]
         }
     ],
     "colour": "#4C97FF",
-    "output": ["String", "Member", "Channel", "Role"],
+    "output": ["Message", "Member", "User"],
     "tooltip": "",
     "helpUrl": ""
 };
@@ -41,16 +41,5 @@ Blockly.Blocks[blockName] = {
 
 Blockly.JavaScript[blockName] = function(block) {
     const searchType = block.getFieldValue("SEARCH");
-    if(searchType === 'Message') {
-        const code = [`interaction.options.getMessage()`, Blockly.JavaScript.ORDER_NONE];
-        return code;
-    } else if(searchType === 'User') {
-        const code = [`interaction.options.getUser()`, Blockly.JavaScript.ORDER_NONE];
-        return code;
-    } else if(searchType === 'Member') {
-        const code = [`interaction.options.getMember()`, Blockly.JavaScript.ORDER_NONE];
-        return code;
-    }
-
-
+    return [`${searchType}`, Blockly.JavaScript.ORDER_NONE];
 };

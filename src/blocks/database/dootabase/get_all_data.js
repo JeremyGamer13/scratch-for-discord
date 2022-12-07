@@ -3,12 +3,12 @@ import Blockly from "blockly/core";
 const blockName = "s4d_get_all_data2";
 
 const blockData = {
-    "message0": "Delete current dootabase data",
+    "message0": "Get all data from dootabase",
     "args0": [
     ],
-  "previousStatement": null,
-    "nextStatement": null,
-    "colour": "#5ba58b",
+    "output": "JSON",
+    "colour": "#50a153",
+    "tooltip": "Gets all data from dootabase\nOutputs a JSON map",
     "helpUrl": ""
 };
 
@@ -19,5 +19,5 @@ Blockly.Blocks[blockName] = {
 };
 
 Blockly.JavaScript[blockName] = function() {
-    return [ 'dootabase.clear()', Blockly.JavaScript.ORDER_ATOMIC ];
+    return [ 'dootabase.all()', Blockly.JavaScript.ORDER_ATOMIC ];
 };

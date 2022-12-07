@@ -9,25 +9,27 @@ const blockData = {
         {
             "type": "input_value",
             "name": "quality",
-            "check": [ "Number", "var", "Env"]
+            "check": ["Number", "var", "Env"]
         }
     ],
-    "colour": "#a81313",
+    "colour": 260,
     "previousStatement": null,
     "nextStatement": null,
-    "tooltip": "Scale the image by a number factor. Can only use Numbers, Variables, or Env secrets. Please use the Convert text to number block here!",
+    "tooltip": "Set the quality for JPG files. Can only use Numbers, Variables, or Env secrets.",
     "helpUrl": ""
 };
 
 Blockly.Blocks[blockName] = {
-    init: function() {
+    init: function () {
         this.jsonInit(blockData);
+        this.setColour("#ff0000")
+        this.setTooltip("This block is now unsupported. We recommend switching to a newer block found in the toolbox. - " + this.tooltip)
     }
 };
 
-Blockly.JavaScript[blockName] = function(block) {
-  const quality = Blockly.JavaScript.valueToCode(block, "quality", Blockly.JavaScript.ORDER_ATOMIC);
-    return `image.quality(Number(` + quality + `))\n`;
+Blockly.JavaScript[blockName] = function (block) {
+    const quality = Blockly.JavaScript.valueToCode(block, "quality", Blockly.JavaScript.ORDER_ATOMIC);
+    return `await image.quality(Number(` + quality + `))\n`;
 }
 
 registerRestrictions(blockName, [

@@ -47,7 +47,6 @@ export const websiteMessages = {
         music: "Système de musique",
         button: "Boutton et ligne de bouttons",
 	image_gen : "Exemple de générateur d'images",
-  imgedit: "(JIMP) Exemple d'édition d'image",
       economy : "Exemple d'économie", aki : "Exemple d'Akinator",
       backup : "Exemple de sauvegarde",
       random : "Exemple de réponse aléatoire"
