@@ -1249,13 +1249,33 @@ Blockly.getMaainWorkspace().addChangeListener(blockCounter(Blockly.getMaainWorks
       let insideBlockBuilderTab = true
       const menu = blocklyModule.menus.createMenu({
         width: 1280,
-        height: 720,
+        height: 752,
         title: "Custom Block Builder",
         zindex: 999,
       });
       const inlineDiv = document.createElement("div")
       inlineDiv.style.display = "flex"
+      inlineDiv.style.flexWrap = "wrap"
       menu.content.append(inlineDiv)
+      const tabPicker = document.createElement("div")
+      tabPicker.style.width = "1280px"
+      tabPicker.style.height = "32px"
+      inlineDiv.append(tabPicker)
+      const tab_BlockBuilder = document.createElement("button")
+      tab_BlockBuilder.innerHTML = "Block Builder"
+      tab_BlockBuilder.style.backgroundColor = "#37005c"
+      tab_BlockBuilder.style.borderWidth = "0px"
+      tab_BlockBuilder.style.height = "100%"
+      tab_BlockBuilder.style.color = "white"
+      tabPicker.append(tab_BlockBuilder)
+      const tab_CodingArea = document.createElement("button")
+      tab_CodingArea.innerHTML = "Code a Block"
+      tab_CodingArea.style.backgroundColor = "#37005c"
+      tab_CodingArea.style.marginLeft = "12px"
+      tab_CodingArea.style.borderWidth = "0px"
+      tab_CodingArea.style.height = "100%"
+      tab_CodingArea.style.color = "white"
+      tabPicker.append(tab_CodingArea)
       const blocklyDiv = document.createElement("div");
       blocklyDiv.style.flex = "0 0 85%"
       blocklyDiv.style.width = "85%";
