@@ -2382,4 +2382,7 @@ body {
   color: red;
   text-decoration: line-through;
 }
+.v-toast__item--warning {
+  background-color: #9900ff !important;
+}
 </style>

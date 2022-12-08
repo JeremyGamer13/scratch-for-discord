@@ -46,6 +46,11 @@
                     <b-icon-download></b-icon-download>
                 </b-button>
             </b-navbar-nav>
+            <b-navbar-nav style="margin-left:20px">
+                <b-button>
+                    <img id="accounts_signInIcon" src="sign_in_icon.png" style="height:24px">
+                </b-button>
+            </b-navbar-nav>
         </b-collapse>
     </b-navbar>
 </template>
@@ -2079,5 +2084,8 @@ if(localStorage.getItem("theme") == null){
     }
     .uitilities_menu_dialog {
         width: 40%;
+    }
+    #themeSwitchingLD > a {
+        height: 100%;
     }
 </style>
