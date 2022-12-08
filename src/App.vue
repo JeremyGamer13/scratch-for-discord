@@ -187,6 +187,24 @@ export default {
         this.$root.$i18n.locale = this.$store.state.blocklyLocale;
     },
     mounted() {
+        let urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('terms-of-service')) {
+            const blob = new Blob([`<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Scratch for Discord JT - TOS</title>
+    </head>
+    <body>
+        <h1>Terms of Service</h1>
+        <h6>Last updated 12/7/2022</h6>
+        <br>
+        <p>Currently Empty, will be updated on account release</p>
+    </body>
+</html>`], { type: "text/html" })
+            const url = URL.createObjectURL(blob)
+            window.location.href = url
+            document.body.innerHTML = ""
+        }
         console.log("...wait a second... a user?")
         console.log("i gotta tell them!")
         console.log(

@@ -7,6 +7,13 @@ export default (favorites) => {
         <sep gap="64"/>
         <label text="No blocks exist yet. Why not submit one in the Custom Block category?"/>
     </category>
+    <category name="Custom Blocks" css-icon="customIcon2 fa fa-gear">
+        <label text="Custom blocks are currently in testing!"/>
+        <label text="If you found any vulnerabilities or bugs, let us know!"/>
+        <button text="Create block..." callbackKey="LAUNCHCUSTOMBLOCKBUILDER"/>
+        <sep gap="32"/>
+        ${window.customBlocks.map(x => `<block type="${x}"/>`).join('\n')}
+    </category>
     <category name="Search" css-icon="customIcon2 fa fa-search">
         <label text="Search category! Version 1.21"/>
         <sep gap="32"/>
@@ -19,12 +26,12 @@ export default (favorites) => {
         <label text="Add your favorite blocks here by right clicking them and pressing &quot;Add to favorite!&quot;"/>
         ${favorites === null ? "" : favorites.map((c) => `<block type="${c}"/>`)}
     </category>
-    <category name="Custom Blocks" css-icon="customIcon2 fa fa-gear">
-        <label text="Custom blocks are currently in testing!"/>
-        <label text="If you found any vulnerabilities or bugs, let us know!"/>
-        <button text="Create block..." callbackKey="LAUNCHCUSTOMBLOCKBUILDER"/>
-        <sep gap="32"/>
-        ${window.customBlocks.map(x => `<block type="${x}"/>`).join('\n')}
+    <category name="Extensions" css-icon="customIcon2 fa fa-cubes">
+        <label text="Extensions are categories of blocks made by the community."/>
+        <label text="They are also allowed to use any JS module, meaning many possibilities."/>
+        <label text="Open the extensions area using the button below!"/>
+        <sep gap="64"/>
+        <button text="Extensions Hub" callbackKey="EXTENSIONS_WINDOW"/>
     </category>
     <sep class="bt"/>
     <category name="Logic" colour="#5b80a5">
@@ -497,7 +504,7 @@ export default (favorites) => {
             <value name="VAR">
                 <shadow type="text">
                     <field name="TEXT"/>hey
-                
+
                 </shadow>
             </value>
         </block>
@@ -505,7 +512,7 @@ export default (favorites) => {
             <value name="VAR">
                 <shadow type="text">
                     <field name="TEXT"/>hey
-                
+
                 </shadow>
             </value>
         </block>
@@ -3070,7 +3077,7 @@ export default (favorites) => {
                 <block type="s4d_set_radius"/>
                 <block type="s4d_set_addon"/>
             </category>
-            
+
 
         </category>
     </category>
