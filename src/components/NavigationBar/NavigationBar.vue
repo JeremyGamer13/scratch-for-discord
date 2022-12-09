@@ -47,7 +47,7 @@
                 </b-button>
             </b-navbar-nav>
             <b-navbar-nav style="margin-left:20px">
-                <b-button>
+                <b-button @click="accounts_signIn()">
                     <img id="accounts_signInIcon" src="sign_in_icon.png" style="height:24px">
                 </b-button>
             </b-navbar-nav>
@@ -72,6 +72,9 @@ import changelog from "./changelog.vue"
 import localforage from 'localforage';
 import r from "./requires";
 import swal from "sweetalert2";
+
+const AccountModule = require("./accountModule")
+
 export default {
     name: "navbar",
     components: {
@@ -2049,6 +2052,10 @@ load()`);
         document.querySelector("html").classList.remove("light-them");
         console.log("changed theme to dark");
       }
+        },
+        accounts_signIn() {
+            if (AccountModule.isSignedIn) return AccountModule.showProfileMenu()
+            AccountModule.askForLogin()
         }
     }
 }
