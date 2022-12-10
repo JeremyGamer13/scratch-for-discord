@@ -39,7 +39,7 @@ module.exports.HTMLTools.createProfileHtml = (parent) => {
         e.profileDisplay = createElement("div", e, pd => {
             pd.style.position = "absolute"
             pd.style.left = "0px"
-            pd.style.top = "0px"
+            pd.style.top = "32px"
             pd.style.backgroundColor = "#ffffff"
             pd.style.width = "100%"
             pd.style.height = "50%"
