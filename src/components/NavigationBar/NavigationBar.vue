@@ -51,7 +51,7 @@
             </b-navbar-nav>
             <b-navbar-nav style="margin-left:20px">
                 <b-button @click="accounts_signIn()">
-                    <img id="accounts_signInIcon" src="sign_in_icon.png" style="height:24px">
+                    <img id="accounts_signInIcon" src="sign_in_icon.png" style="height:24px;border-radius:100%">
                 </b-button>
             </b-navbar-nav>
         </b-collapse>
@@ -77,6 +77,7 @@ import r from "./requires";
 import swal from "sweetalert2";
 
 const AccountModule = require("./accountModule")
+const AccountsElements = {}
 
 export default {
     name: "navbar",
@@ -198,6 +199,7 @@ export default {
             })
             preloadAudio("glitchare.mp3", true)
         }
+        AccountsElements.SignInIcon = document.getElementById("accounts_signInIcon")
     },
     methods: {
         exportToCode() {
@@ -2056,7 +2058,11 @@ load()`])
         },
         accounts_signIn() {
             if (AccountModule.isSignedIn) return AccountModule.HelperTools.showProfileMenu()
-            AccountModule.HelperTools.askForLogin()
+            AccountModule.HelperTools.askForLogin().then(accountId => {
+                AccountModule.getUserById(accountId).then(data => {
+                    AccountsElements.SignInIcon.src = data.avatar
+                })
+            })
         }
     }
 }
