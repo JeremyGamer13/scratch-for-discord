@@ -205,6 +205,37 @@ export default {
             window.location.href = url
             document.body.innerHTML = ""
         }
+        if (urlParams.has('discord-allowed-links')) {
+            const blob = new Blob([`<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Scratch for Discord JT - Discord - Allowed Links</title>
+    </head>
+    <body>
+        <h1>Discord - Allowed Links</h1>
+        <h6>Last updated 12/10/2022</h6>
+        <p>This page lists all links that are allowed in the S4D JT Discord.</p>
+        <p>If the link starts with a link listed here, it is allowed (unless an exception is listed next to it)</p>
+        <br>
+        ${[
+                { url: "https://scratch-for-discord.com/", exception: "any forum or example url that has content that breaks the Discord's rules" },
+                { url: "https://scratch-for-discord-469.vercel.app/", exception: "any forum or example url that has content that breaks the Discord's rules" },
+                { url: "https://s4d-469.vercel.app/", exception: "any forum or example url that has content that breaks the Discord's rules" },
+                { url: "https://s4d469.vercel.app/", exception: "any forum or example url that has content that breaks the Discord's rules" },
+                { url: "https://s4d469-cve-undo-removals.vercel.app/", exception: "any forum or example url that has content that breaks the Discord's rules" },
+                { url: "https://s4d-469-beta.vercel.app/", exception: "any forum or example url that has content that breaks the Discord's rules" },
+                { url: "https://s4d-469-majortest.vercel.app/" },
+                { url: "https://scratch-for-discord-jt.vercel.app/", exception: "any forum, example url, profile or other content that breaks the Discord's rules" },
+                { url: "https://discord.gift/", exception: "any store item that contains content that breaks the Discord's rules" },
+        ].map(data => {
+            return `<p><span><a target="_blank" href="${data.url}">${data.url}</a>${data.exception ? ` (You cannot post if the link is: ${data.exception})` : ""}</span></p>`
+        }).join("\n")}
+    </body>
+</html>`], { type: "text/html" })
+            const url = URL.createObjectURL(blob)
+            window.location.href = url
+            document.body.innerHTML = ""
+        }
         console.log("...wait a second... a user?")
         console.log("i gotta tell them!")
         console.log(
