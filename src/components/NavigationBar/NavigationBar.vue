@@ -1,7 +1,9 @@
 <template>
-    <b-navbar toggleable="lg" type="dark" style="background-color:#37005c !important;user-select:none;" id="navbar nav-main">
+    <b-navbar toggleable="lg" type="dark" style="background-color:#37005c !important;user-select:none;"
+        id="navbar nav-main">
         <b-navbar-brand style="font-size: 120%;">
-            <button id="hideAllGuiElements" class="hide-gui-button"><img :src="decideNavBarImage" width="35" draggable="false" id="navigationBarS4DImage"></button>
+            <button id="hideAllGuiElements" class="hide-gui-button"><img :src="decideNavBarImage" width="35"
+                    draggable="false" id="navigationBarS4DImage"></button>
             Scratch For Discord JT
         </b-navbar-brand>
 
@@ -25,7 +27,8 @@
                     style="width: 32px; height: 32px; margin-top: 2px; margin-right: 5px;" @click="changeTheme">
                 </b-nav-item>
 
-                <b-button @click="changeFileName" style="border-right-color: #37005c; border-radius: 0em; border-top-left-radius: 0.25em; border-bottom-left-radius: 0.25em">
+                <b-button @click="changeFileName"
+                    style="border-right-color: #37005c; border-radius: 0em; border-top-left-radius: 0.25em; border-bottom-left-radius: 0.25em">
                     <span id="docName" style="font-size: smaller">{{ $t("untitled") }}</span>
                 </b-button>
                 <!-- border-top-right-radius: 0.25em; border-bottom-right-radius: 0.25em -->
@@ -78,22 +81,22 @@ const AccountModule = require("./accountModule")
 export default {
     name: "navbar",
     components: {
-    FileMenu,
-    EditMenu,
-    ExamplesMenu,
-    CodeModal,
-    shortcuts,
-    Credit,
-    changelog,
-    Socials
-},
+        FileMenu,
+        EditMenu,
+        ExamplesMenu,
+        CodeModal,
+        shortcuts,
+        Credit,
+        changelog,
+        Socials
+    },
     computed: {
-        decideNavBarImage: function() {
+        decideNavBarImage: function () {
             return window.location.origin + "/scratch.png"
         }
     },
-    mounted(){
-        document.getElementById("docName").addEventListener("input", function() {
+    mounted() {
+        document.getElementById("docName").addEventListener("input", function () {
             if (document.querySelector("#docName").textContent == "") {
                 document.querySelector("#docName").textContent = "Untitled document"
             }
@@ -101,7 +104,7 @@ export default {
         }, false);
         const element = document.querySelector("#docName");
         element.spellcheck = false;
-        element.focus(); 
+        element.focus();
         element.blur();
         this.$store.commit("setLocale", {
             newLocale: "en"
@@ -197,7 +200,7 @@ export default {
         }
     },
     methods: {
-        exportToCode(){
+        exportToCode() {
             function getWorkspaceProblems(workspace) {
                 let problems = []
                 let problematic = false
@@ -255,14 +258,14 @@ export default {
                     confirm: "Download"
                 },
             }).then(async result => {
-                let requires = [`"discord.js": "^13.7.0",`,`"process":"^0.11.10",`,`"easy-json-database": "^1.5.0",`,`"discord-logs": "2.0.0",`]
+                let requires = [`"discord.js": "^13.7.0",`, `"process":"^0.11.10",`, `"easy-json-database": "^1.5.0",`, `"discord-logs": "2.0.0",`]
                 let oldrequires = await localforage.getItem("requires")
-                r(requires,oldrequires)
+                r(requires, oldrequires)
                 var requireUsed = requires.join("\n")
                 if ((requireUsed.charAt(requireUsed.length - 1)) == ",") {
                     requireUsed = requireUsed.substring(0, (requireUsed.length - 1))
                 }
-                if(result){
+                if (result) {
                     const zip = new JSZip();
                     const xmlContent = Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(this.$store.state.workspace));
                     const fileName = `${encodeURIComponent(document.querySelector("#docName").textContent).replace(/%20/g, " ")}.zip`;
@@ -344,24 +347,23 @@ load()`);
                     zip.generateAsync({
                         type: "blob"
                     })
-                    .then((blob) => {
-                        const a = document.createElement("a");
-                        a.style = "display: none";
-                        document.body.appendChild(a);
-                        const url = window.URL.createObjectURL(blob);
-                        a.href = url;
-                        a.download = fileName;
-                        a.click();
-                        window.URL.revokeObjectURL(url);
-                        document.body.removeChild(a);
-                    });
-            console.log("barry: well we are done, lets get back to managing the blocks")
-            console.log("johnathan: ok")
+                        .then((blob) => {
+                            const a = document.createElement("a");
+                            a.style = "display: none";
+                            document.body.appendChild(a);
+                            const url = window.URL.createObjectURL(blob);
+                            a.href = url;
+                            a.download = fileName;
+                            a.click();
+                            window.URL.revokeObjectURL(url);
+                            document.body.removeChild(a);
+                        });
+                    console.log("barry: well we are done, lets get back to managing the blocks")
+                    console.log("johnathan: ok")
                 }
-                else
-                {
-                    
-            console.log("barry: nvm lol")
+                else {
+
+                    console.log("barry: nvm lol")
                 }
             });
         },
@@ -827,11 +829,11 @@ load()`);
                     }
                     case "dfi": {
                         // bruhb
-                            console.log("barry: hey what file do you want to download?")
-                            console.log("johnathan: dude they cant hear us")
-                            console.log("barry: oh right i forgot")
-                            const wrapper = document.createElement('div');
-                            wrapper.innerHTML = `<h6>Explanations:</h6>
+                        console.log("barry: hey what file do you want to download?")
+                        console.log("johnathan: dude they cant hear us")
+                        console.log("barry: oh right i forgot")
+                        const wrapper = document.createElement('div');
+                        wrapper.innerHTML = `<h6>Explanations:</h6>
                 <ul>
                     <li style='text-align:left'>"index.js" contains your bot's code.</li>
                     <li style='text-align:left'>"package.json" contains all of the packages needed for hosting on your computer.</li>
@@ -855,66 +857,66 @@ load()`);
       <label for="file6"> boot.js</label><br><br>
       <input type="checkbox" id="ZIP">
       <label for="ZIP"> ZIP Files</label>-->`;
-                            //     zip.file(".replit", 'run = "npm start"');
-                            //   zip.file("database.json", "{}");
-                            this.$swal({
-                                title: "Which file are you downloading?",
-                                content: wrapper,
-                                icon: 'warning',
-                                buttons: {
-                                    cancel: "Nevermind...",
-                                    confirm: "Download"
-                                    //     file1: "bot.js",
-                                    //     file2: "package.json",
-                                    //     file3: "blocks.xml",
-                                    //     file4: ".replit",
-                                    //     file5: "database.json",
-                                    //     file6: "boot.js"
-                                },
-                            }).then(async (result) => {
-                                console.log(result)
-                                if ((result == true)) {
-                                    var file1 = document.getElementById('file1').checked
-                                    var file2 = document.getElementById('file2').checked
-                                    var file3 = document.getElementById('file3').checked
-                                    // var file4 = document.getElementById('file4').checked
-                                    // var file5 = document.getElementById('file5').checked
-                                    // var file6 = document.getElementById('file6').checked
-                                    //var zip = document.getElementById('ZIP').checked
-                                    console.log(file1)
-                                    console.log(file2)
-                                    console.log(file3)
-                                    // console.log(file4)
-                                    // console.log(file5)
-                                    // console.log(file6)
-                                    //console.log(zip)
-                                    if (file1) {
-                                        console.log("barry: hey can you go grab their code")
-                                        console.log("johnathan: ok")
-                                        const javascriptContent = this.getWorkspaceCode();
-                                        const blob = new Blob([javascriptContent])
-                                        const a = document.createElement("a");
-                                        a.style = "display: none";
-                                        document.body.appendChild(a);
-                                        const url = window.URL.createObjectURL(blob);
-                                        a.href = url;
-                                        a.download = "index.js";
-                                        a.click();
-                                        window.URL.revokeObjectURL(url);
-                                        document.body.removeChild(a);
-                                        console.log("johnathan: done")
+                        //     zip.file(".replit", 'run = "npm start"');
+                        //   zip.file("database.json", "{}");
+                        this.$swal({
+                            title: "Which file are you downloading?",
+                            content: wrapper,
+                            icon: 'warning',
+                            buttons: {
+                                cancel: "Nevermind...",
+                                confirm: "Download"
+                                //     file1: "bot.js",
+                                //     file2: "package.json",
+                                //     file3: "blocks.xml",
+                                //     file4: ".replit",
+                                //     file5: "database.json",
+                                //     file6: "boot.js"
+                            },
+                        }).then(async (result) => {
+                            console.log(result)
+                            if ((result == true)) {
+                                var file1 = document.getElementById('file1').checked
+                                var file2 = document.getElementById('file2').checked
+                                var file3 = document.getElementById('file3').checked
+                                // var file4 = document.getElementById('file4').checked
+                                // var file5 = document.getElementById('file5').checked
+                                // var file6 = document.getElementById('file6').checked
+                                //var zip = document.getElementById('ZIP').checked
+                                console.log(file1)
+                                console.log(file2)
+                                console.log(file3)
+                                // console.log(file4)
+                                // console.log(file5)
+                                // console.log(file6)
+                                //console.log(zip)
+                                if (file1) {
+                                    console.log("barry: hey can you go grab their code")
+                                    console.log("johnathan: ok")
+                                    const javascriptContent = this.getWorkspaceCode();
+                                    const blob = new Blob([javascriptContent])
+                                    const a = document.createElement("a");
+                                    a.style = "display: none";
+                                    document.body.appendChild(a);
+                                    const url = window.URL.createObjectURL(blob);
+                                    a.href = url;
+                                    a.download = "index.js";
+                                    a.click();
+                                    window.URL.revokeObjectURL(url);
+                                    document.body.removeChild(a);
+                                    console.log("johnathan: done")
+                                }
+                                if ((file2)) {
+                                    console.log("johnathan: hey can you grab the packages")
+                                    console.log("barry: on it")
+                                    let requires = [`"discord.js": "^13.7.0",`, `"process":"^0.11.10",`, `"easy-json-database": "^1.5.0",`]
+                                    let oldrequires = await localforage.getItem("requires")
+                                    r(requires, oldrequires)
+                                    var requireUsed = requires.join("\n")
+                                    if ((requireUsed.charAt(requireUsed.length - 1)) == ",") {
+                                        requireUsed = requireUsed.substring(0, (requireUsed.length - 1))
                                     }
-                                    if ((file2)) {
-                                        console.log("johnathan: hey can you grab the packages")
-                                        console.log("barry: on it")
-                                        let requires = [`"discord.js": "^13.7.0",`, `"process":"^0.11.10",`, `"easy-json-database": "^1.5.0",`]
-                                        let oldrequires = await localforage.getItem("requires")
-                                        r(requires, oldrequires)
-                                        var requireUsed = requires.join("\n")
-                                        if ((requireUsed.charAt(requireUsed.length - 1)) == ",") {
-                                            requireUsed = requireUsed.substring(0, (requireUsed.length - 1))
-                                        }
-                                        const javascriptContent = `{\n
+                                    const javascriptContent = `{\n
                             "name": "scratch-for-discord-bot",\n
                             "version": "1.0.0",\n
                             "main": "index.js",\n
@@ -932,100 +934,100 @@ load()`);
                                 "node": "^17"\n
                             }\n
                         }`;
-                                        const blob = new Blob([javascriptContent])
-                                        const a = document.createElement("a");
-                                        a.style = "display: none";
-                                        document.body.appendChild(a);
-                                        const url = window.URL.createObjectURL(blob);
-                                        a.href = url;
-                                        a.download = "package.json";
-                                        a.click();
-                                        window.URL.revokeObjectURL(url);
-                                        document.body.removeChild(a);
-                                        console.log("barry: done")
-                                    }
-                                    if (file3) {
-                                        console.log("barry: im gonna start getting their blocks")
-                                        console.log("johnathan: ok")
-                                        const xmlContent = Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(this.$store.state.workspace));
-                                        const blob = new Blob([xmlContent])
-                                        const a = document.createElement("a");
-                                        a.style = "display: none";
-                                        document.body.appendChild(a);
-                                        const url = window.URL.createObjectURL(blob);
-                                        a.href = url;
-                                        a.download = "blocks.xml";
-                                        a.click();
-                                        window.URL.revokeObjectURL(url);
-                                        document.body.removeChild(a);
-                                        console.log("barry: finished")
-                                    }
-                                    /*
-                                    if (file4) {
-                                        console.log("barry: lemme just type in a couple things real quick")
-                                        console.log("johnathan: ok")
-                                        const blob = new Blob(['run = "npm start"'])
-                                        const a = document.createElement("a");
-                                        a.style = "display: none";
-                                        document.body.appendChild(a);
-                                        const url = window.URL.createObjectURL(blob);
-                                        a.href = url;
-                                        a.download = "\\.replit";
-                                        // you cant save it as .replit for some reason, _.replit is the best option for this
-                                        a.click();
-                                        window.URL.revokeObjectURL(url);
-                                        document.body.removeChild(a);
-                                        console.log("barry: oh damn i accidentally added an underscore")
-                                        console.log("johnathan: again?")
-                                    }
-                                    if (file5) {
-                                        console.log("barry: im gonna grab one of our sample databases")
-                                        const blob = new Blob(["{}"])
-                                        const a = document.createElement("a");
-                                        a.style = "display: none";
-                                        document.body.appendChild(a);
-                                        const url = window.URL.createObjectURL(blob);
-                                        a.href = url;
-                                        a.download = "database.json";
-                                        a.click();
-                                        window.URL.revokeObjectURL(url);
-                                        document.body.removeChild(a);
-                                        console.log("barry: done")
-                                    }
-                                    if (file6) {
-                                        console.log("barry: johnathan can you help me get the boot file out of the acid pool?")
-                                        console.log("johnathan: ok")
-                                        const blob = new Blob([`const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-    async function load(){
-    console.log(\`
-    entering BIOS please wait....\`)
-    console.clear()
-    console.log(\`
-    ██████╗░░█████╗░░█████╗░████████╗██╗███╗░░██╗░██████╗░░░░░░░░░░
-    ██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██║████╗░██║██╔════╝░░░░░░░░░░
-    ██████╦╝██║░░██║██║░░██║░░░██║░░░██║██╔██╗██║██║░░██╗░░░░░░░░░░
-    ██╔══██╗██║░░██║██║░░██║░░░██║░░░██║██║╚████║██║░░╚██╗░░░░░░░░░
-    ██████╦╝╚█████╔╝╚█████╔╝░░░██║░░░██║██║░╚███║╚██████╔╝██╗██╗██╗
-    ╚═════╝░░╚════╝░░╚════╝░░░░╚═╝░░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝╚═╝╚═╝\`)
-    console.log(\`𝕔𝕠𝕕𝕖 𝕝𝕠𝕒𝕕𝕖𝕕\`)
-    require("./bot")
-    }
-    load()`])
-                                        const a = document.createElement("a");
-                                        a.style = "display: none";
-                                        document.body.appendChild(a);
-                                        const url = window.URL.createObjectURL(blob);
-                                        a.href = url;
-                                        a.download = "boot.js";
-                                        a.click();
-                                        window.URL.revokeObjectURL(url);
-                                        document.body.removeChild(a);
-                                        console.log("barry: thanks")
-                                    }*/
-                                    console.log("barry: welp guess we are done")
-                                    console.log("johnathan: lets get back to work, shall we?")
+                                    const blob = new Blob([javascriptContent])
+                                    const a = document.createElement("a");
+                                    a.style = "display: none";
+                                    document.body.appendChild(a);
+                                    const url = window.URL.createObjectURL(blob);
+                                    a.href = url;
+                                    a.download = "package.json";
+                                    a.click();
+                                    window.URL.revokeObjectURL(url);
+                                    document.body.removeChild(a);
+                                    console.log("barry: done")
                                 }
-                            })
+                                if (file3) {
+                                    console.log("barry: im gonna start getting their blocks")
+                                    console.log("johnathan: ok")
+                                    const xmlContent = Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(this.$store.state.workspace));
+                                    const blob = new Blob([xmlContent])
+                                    const a = document.createElement("a");
+                                    a.style = "display: none";
+                                    document.body.appendChild(a);
+                                    const url = window.URL.createObjectURL(blob);
+                                    a.href = url;
+                                    a.download = "blocks.xml";
+                                    a.click();
+                                    window.URL.revokeObjectURL(url);
+                                    document.body.removeChild(a);
+                                    console.log("barry: finished")
+                                }
+                                /*
+                                if (file4) {
+                                    console.log("barry: lemme just type in a couple things real quick")
+                                    console.log("johnathan: ok")
+                                    const blob = new Blob(['run = "npm start"'])
+                                    const a = document.createElement("a");
+                                    a.style = "display: none";
+                                    document.body.appendChild(a);
+                                    const url = window.URL.createObjectURL(blob);
+                                    a.href = url;
+                                    a.download = "\\.replit";
+                                    // you cant save it as .replit for some reason, _.replit is the best option for this
+                                    a.click();
+                                    window.URL.revokeObjectURL(url);
+                                    document.body.removeChild(a);
+                                    console.log("barry: oh damn i accidentally added an underscore")
+                                    console.log("johnathan: again?")
+                                }
+                                if (file5) {
+                                    console.log("barry: im gonna grab one of our sample databases")
+                                    const blob = new Blob(["{}"])
+                                    const a = document.createElement("a");
+                                    a.style = "display: none";
+                                    document.body.appendChild(a);
+                                    const url = window.URL.createObjectURL(blob);
+                                    a.href = url;
+                                    a.download = "database.json";
+                                    a.click();
+                                    window.URL.revokeObjectURL(url);
+                                    document.body.removeChild(a);
+                                    console.log("barry: done")
+                                }
+                                if (file6) {
+                                    console.log("barry: johnathan can you help me get the boot file out of the acid pool?")
+                                    console.log("johnathan: ok")
+                                    const blob = new Blob([`const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+async function load(){
+console.log(\`
+entering BIOS please wait....\`)
+console.clear()
+console.log(\`
+██████╗░░█████╗░░█████╗░████████╗██╗███╗░░██╗░██████╗░░░░░░░░░░
+██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██║████╗░██║██╔════╝░░░░░░░░░░
+██████╦╝██║░░██║██║░░██║░░░██║░░░██║██╔██╗██║██║░░██╗░░░░░░░░░░
+██╔══██╗██║░░██║██║░░██║░░░██║░░░██║██║╚████║██║░░╚██╗░░░░░░░░░
+██████╦╝╚█████╔╝╚█████╔╝░░░██║░░░██║██║░╚███║╚██████╔╝██╗██╗██╗
+╚═════╝░░╚════╝░░╚════╝░░░░╚═╝░░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝╚═╝╚═╝\`)
+console.log(\`𝕔𝕠𝕕𝕖 𝕝𝕠𝕒𝕕𝕖𝕕\`)
+require("./bot")
+}
+load()`])
+                                    const a = document.createElement("a");
+                                    a.style = "display: none";
+                                    document.body.appendChild(a);
+                                    const url = window.URL.createObjectURL(blob);
+                                    a.href = url;
+                                    a.download = "boot.js";
+                                    a.click();
+                                    window.URL.revokeObjectURL(url);
+                                    document.body.removeChild(a);
+                                    console.log("barry: thanks")
+                                }*/
+                                console.log("barry: welp guess we are done")
+                                console.log("johnathan: lets get back to work, shall we?")
+                            }
+                        })
                         // bruh j
                         break
                     }
@@ -1095,50 +1097,8 @@ load()`);
                                 return
                             }
                             if (String(result) == "delete") {
-                            let keys = await localforage.getItem("tokens")
-                            if (keys === null) {
-                                const Toast = swal.mixin({
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 3000,
-                                    timerProgressBar: true,
-                                    didOpen: (toast) => {
-                                        toast.addEventListener('mouseenter', swal.stopTimer)
-                                        toast.addEventListener('mouseleave', swal.resumeTimer)
-                                    }
-                                })
-                                Toast.fire({
-                                    icon: 'error',
-                                    title: this.$t("token.erros")
-                                })
-                                return
-                            }
-                            swal.fire({
-                                title: this.$t("token.deletee.title"),
-                                html: `
-            ${this.$t("token.deletee.text")}<br><br>
-            <select class="custom-select" id="restore-select">
-                ${keys.map((key) => `<option><b>${key.replace("token-", "")}</b></option>`)}
-            </select>
-          `,
-                                showCancelButton: true,
-                                cancelButtonText: this.$t("token.deletee.cancel"),
-                                confirmButtonText: this.$t("token.deletee.load"),
-                                preConfirm: async () => {
-                                    const select = document.getElementById("restore-select");
-                                    await localforage.removeItem(`token-${select.value}`);
-                                    let tokens = await localforage.getItem("tokens")
-                                    function arrayRemove(arr, value) {
-                                        return arr.filter(function (ele) {
-                                            return ele != value;
-                                        });
-                                    }
-                                    if (arrayRemove(tokens, `token-${select.value}`).length === 0) {
-                                        await localforage.setItem("tokens", null)
-                                    } else {
-                                        await localforage.setItem("tokens", arrayRemove(tokens, `token-${select.value}`))
-                                    }
+                                let keys = await localforage.getItem("tokens")
+                                if (keys === null) {
                                     const Toast = swal.mixin({
                                         toast: true,
                                         position: 'top-end',
@@ -1150,14 +1110,56 @@ load()`);
                                             toast.addEventListener('mouseleave', swal.resumeTimer)
                                         }
                                     })
-                                    let a = this.$t("token.deletee.success")
                                     Toast.fire({
-                                        icon: 'success',
-                                        title: `${a}`
+                                        icon: 'error',
+                                        title: this.$t("token.erros")
                                     })
-                                
-                                },
-                            })
+                                    return
+                                }
+                                swal.fire({
+                                    title: this.$t("token.deletee.title"),
+                                    html: `
+            ${this.$t("token.deletee.text")}<br><br>
+            <select class="custom-select" id="restore-select">
+                ${keys.map((key) => `<option><b>${key.replace("token-", "")}</b></option>`)}
+            </select>
+          `,
+                                    showCancelButton: true,
+                                    cancelButtonText: this.$t("token.deletee.cancel"),
+                                    confirmButtonText: this.$t("token.deletee.load"),
+                                    preConfirm: async () => {
+                                        const select = document.getElementById("restore-select");
+                                        await localforage.removeItem(`token-${select.value}`);
+                                        let tokens = await localforage.getItem("tokens")
+                                        function arrayRemove(arr, value) {
+                                            return arr.filter(function (ele) {
+                                                return ele != value;
+                                            });
+                                        }
+                                        if (arrayRemove(tokens, `token-${select.value}`).length === 0) {
+                                            await localforage.setItem("tokens", null)
+                                        } else {
+                                            await localforage.setItem("tokens", arrayRemove(tokens, `token-${select.value}`))
+                                        }
+                                        const Toast = swal.mixin({
+                                            toast: true,
+                                            position: 'top-end',
+                                            showConfirmButton: false,
+                                            timer: 3000,
+                                            timerProgressBar: true,
+                                            didOpen: (toast) => {
+                                                toast.addEventListener('mouseenter', swal.stopTimer)
+                                                toast.addEventListener('mouseleave', swal.resumeTimer)
+                                            }
+                                        })
+                                        let a = this.$t("token.deletee.success")
+                                        Toast.fire({
+                                            icon: 'success',
+                                            title: `${a}`
+                                        })
+
+                                    },
+                                })
                             } else if (String(result) == "load") {
                                 let keys = await localforage.getItem("tokens")
                                 if (keys === null) {
@@ -1804,16 +1806,16 @@ load()`);
                                             zip.generateAsync({
                                                 type: "blob"
                                             }).then((blob) => {
-                                                    const a = document.createElement("a")
-                                                    a.style = "display: none"
-                                                    document.body.appendChild(a)
-                                                    const url = window.URL.createObjectURL(blob)
-                                                    a.href = url
-                                                    a.download = 's4d.data'
-                                                    a.click()
-                                                    window.URL.revokeObjectURL(url)
-                                                    document.body.removeChild(a)
-                                                })
+                                                const a = document.createElement("a")
+                                                a.style = "display: none"
+                                                document.body.appendChild(a)
+                                                const url = window.URL.createObjectURL(blob)
+                                                a.href = url
+                                                a.download = 's4d.data'
+                                                a.click()
+                                                window.URL.revokeObjectURL(url)
+                                                document.body.removeChild(a)
+                                            })
                                         })
                                     })
                                     break
@@ -1828,7 +1830,7 @@ load()`);
                 }
             })
         },
-        runbot(){
+        runbot() {
             // const wrapper = document.createElement('div');
             // wrapper.innerHTML = `<!--<h6>Run your bot?</h6>
             // <ul>
@@ -1976,47 +1978,46 @@ load()`);
                             return;
                         }
                         fetch('https://469runtest.jeremygamer13.repl.co/?imbored=true', requestOptions)
-                        // fetch('https://469runtest.jeremygamer13.repl.co/?imbored=true')
-                        .then(async (response) => {
-                            console.log(response)
-                            console.log("S4D sent a request, the response status code is", response.status)
-                            if ((response.status >= 300) && (response.status < 400)) {
-                                console.log("epic server: oopsie poopsie something happen")
-                                console.log("barry: idk something happen")
-                                console.log("johnathan: thats not good but we cant do much")
-                                console.log("barry: true :(")
-                                swal.fire(
-                                    "Uhh..",
-                                    `Something may have gone wrong with the request. The server responded with status code ${String(response.status)}. You could check if your bot went online? You can also try to refresh.`,
-                                    "warning"
-                                )
-                            } else if (response.status >= 400) {
-                                console.log("epic server: broken")
-                                console.log("barry: bruh it broken")
-                                console.log("johnathan: :(")
-                                console.log("barry: :(")
-                                let morestuffIDK = response
-                                response.text().then((repons) => {
+                            // fetch('https://469runtest.jeremygamer13.repl.co/?imbored=true')
+                            .then(async (response) => {
+                                console.log(response)
+                                console.log("S4D sent a request, the response status code is", response.status)
+                                if ((response.status >= 300) && (response.status < 400)) {
+                                    console.log("epic server: oopsie poopsie something happen")
+                                    console.log("barry: idk something happen")
+                                    console.log("johnathan: thats not good but we cant do much")
+                                    console.log("barry: true :(")
                                     swal.fire(
-                                        "Whoops!",
-                                        `Something went wrong with the request. The server responded with status code <b>${String(morestuffIDK.status)}</b>. You may need to refresh the page or try again later as the server could be down.<br><br>Server Response:<br><code>${repons}</code>`,
-                                        "error"
+                                        "Uhh..",
+                                        `Something may have gone wrong with the request. The server responded with status code ${String(response.status)}. You could check if your bot went online? You can also try to refresh.`,
+                                        "warning"
                                     )
-                                })
-                            } else {
-                                console.log("epic server: POST request sent to JeremyGamer13s dumb and insecure API😀😁😀👍😁👍👍👍")
-                                console.log("barry: done")
-                                console.log("johnathan: nice, now lets get back to work")
-                                swal.fire(
-                                    "Nice!",
-                                    `Your bot should go online soon.`,
-                                    "success"
-                                )
-                            }
-                        })
+                                } else if (response.status >= 400) {
+                                    console.log("epic server: broken")
+                                    console.log("barry: bruh it broken")
+                                    console.log("johnathan: :(")
+                                    console.log("barry: :(")
+                                    let morestuffIDK = response
+                                    response.text().then((repons) => {
+                                        swal.fire(
+                                            "Whoops!",
+                                            `Something went wrong with the request. The server responded with status code <b>${String(morestuffIDK.status)}</b>. You may need to refresh the page or try again later as the server could be down.<br><br>Server Response:<br><code>${repons}</code>`,
+                                            "error"
+                                        )
+                                    })
+                                } else {
+                                    console.log("epic server: POST request sent to JeremyGamer13s dumb and insecure API😀😁😀👍😁👍👍👍")
+                                    console.log("barry: done")
+                                    console.log("johnathan: nice, now lets get back to work")
+                                    swal.fire(
+                                        "Nice!",
+                                        `Your bot should go online soon.`,
+                                        "success"
+                                    )
+                                }
+                            })
                     }
-                    catch (err)
-                    {
+                    catch (err) {
                         swal.fire(
                             "An error occurred!",
                             String(err),
@@ -2031,68 +2032,71 @@ load()`);
                     }
                     // .then(response => response.json())
                     // .then(data => element.innerHTML = data.id );
-                    
+
                 }
             })
         },
         changeFileName() {
-          let oldFileName = document.querySelector("#docName").textContent
-          let fileName = prompt("Please enter your new document's name:", oldFileName);
-          if (fileName.length != 0) {
-            document.querySelector("#docName").textContent = fileName;
-          }
+            let oldFileName = document.querySelector("#docName").textContent
+            let fileName = prompt("Please enter your new document's name:", oldFileName);
+            if (fileName.length != 0) {
+                document.querySelector("#docName").textContent = fileName;
+            }
         },
         changeTheme() {
-      if (localStorage.getItem("theme") === "dark") {
-        localStorage.setItem("theme", "light");
-        document.querySelector("html").classList.add("light-them");
-        console.log("changed theme to light");
-      } else {
-        localStorage.setItem("theme", "dark");
-        document.querySelector("html").classList.remove("light-them");
-        console.log("changed theme to dark");
-      }
+            if (localStorage.getItem("theme") === "dark") {
+                localStorage.setItem("theme", "light");
+                document.querySelector("html").classList.add("light-them");
+                console.log("changed theme to light");
+            } else {
+                localStorage.setItem("theme", "dark");
+                document.querySelector("html").classList.remove("light-them");
+                console.log("changed theme to dark");
+            }
         },
         accounts_signIn() {
-            if (AccountModule.isSignedIn) return AccountModule.showProfileMenu()
-            AccountModule.askForLogin()
+            if (AccountModule.isSignedIn) return AccountModule.HelperTools.showProfileMenu()
+            AccountModule.HelperTools.askForLogin()
         }
     }
 }
-if(localStorage.getItem("theme") == null){
+if (localStorage.getItem("theme") == null) {
     localStorage.setItem("theme", "dark");
-  }
-  (async() => {
-  if (localStorage.getItem("theme") === "light") {
-    document.querySelector("html").classList.add("light-them");
-      } else {
-          const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-    await delay(1 * 1000);
-     document.querySelector("html").classList.remove("light-them");
-      }
-       })()
+}
+(async () => {
+    if (localStorage.getItem("theme") === "light") {
+        document.querySelector("html").classList.add("light-them");
+    } else {
+        const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+        await delay(1 * 1000);
+        document.querySelector("html").classList.remove("light-them");
+    }
+})()
 </script>
 
 <style>
 .hide-gui-button {
-        background-color: transparent;
-        border-width: 0px;
-        outline-width: 0px;
-    }
-    .show-gui-button {
-        background-color: transparent;
-        border-width: 0px;
-        outline-width: 0px;
-        margin: 13px;
-        position: absolute;
-        left: 3px;
-        top: 0px;
-        z-index: 99999;
-    }
-    .uitilities_menu_dialog {
-        width: 40%;
-    }
-    #themeSwitchingLD > a {
-        height: 100%;
-    }
+    background-color: transparent;
+    border-width: 0px;
+    outline-width: 0px;
+}
+
+.show-gui-button {
+    background-color: transparent;
+    border-width: 0px;
+    outline-width: 0px;
+    margin: 13px;
+    position: absolute;
+    left: 3px;
+    top: 0px;
+    z-index: 99999;
+}
+
+.uitilities_menu_dialog {
+    width: 40%;
+}
+
+#themeSwitchingLD>a {
+    height: 100%;
+}
 </style>

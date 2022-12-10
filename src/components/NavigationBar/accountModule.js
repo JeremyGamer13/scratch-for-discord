@@ -1,6 +1,8 @@
 /* eslint-disable */
+// helper modules
 const BlocklyModule = require("../../blocks/blocklyModule")
 
+// functions
 function createElement(tag, parent, cb) {
     const e = document.createElement(tag)
     if (parent) parent.append(e)
@@ -11,9 +13,11 @@ function cleanStringForHTML(str) {
     return String(str).replace(/</gmi, "&lt;")
 }
 
+// main variables
 module.exports.apiURL = "https://S4DJTPBESystems.jeremygamer13.repl.co/"
 module.exports.isSignedIn = false
 
+// main functions
 module.exports.getUserById = (id) => {
     return new Promise((resolve, reject) => {
         resolve({
@@ -28,13 +32,30 @@ module.exports.getUserById = (id) => {
     })
 }
 
-module.exports.askForLogin = () => {
+// html tools
+module.exports.HTMLTools = {}
+module.exports.HTMLTools.createProfileHtml = (parent) => {
+    return createElement("div", parent, e => {
+        e.profileDisplay = createElement("div", e, pd => {
+            pd.style.position = "absolute"
+            pd.style.left = "0px"
+            pd.style.top = "0px"
+            pd.style.backgroundColor = "#ffffff"
+            pd.style.width = "100%"
+            pd.style.height = "50%"
+        })
+    })
+}
+
+// helper tools
+module.exports.HelperTools = {}
+module.exports.HelperTools.askForLogin = () => {
     return new Promise((resolve, reject) => {
         module.exports.isSignedIn = true
         resolve()
     })
 }
-module.exports.showProfileMenu = (id) => {
+module.exports.HelperTools.showProfileMenu = (id) => {
     const menu = BlocklyModule.menus.createMenu({
         width: 512,
         height: 512,
@@ -43,6 +64,7 @@ module.exports.showProfileMenu = (id) => {
     })
     module.exports.getUserById(id).then(data => {
         menu.topbar.contentDiv.titleLabel.innerHTML = cleanStringForHTML(data.displayname) + "'s Profile"
+        const profileArea = module.exports.HTMLTools.createProfileHtml(menu.content)
     }).catch(err => {
         createElement("p", menu.content, e => {
             e.innerHTML = cleanStringForHTML(JSON.stringify(err))
