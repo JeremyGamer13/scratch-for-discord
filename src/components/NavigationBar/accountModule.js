@@ -16,6 +16,7 @@ function cleanStringForHTML(str) {
 // main variables
 module.exports.apiURL = "https://S4DJTPBESystems.jeremygamer13.repl.co/"
 module.exports.isSignedIn = false
+module.exports.signedInAccountId = null
 
 // main functions
 module.exports.getUserById = (id) => {
@@ -190,13 +191,46 @@ module.exports.HTMLTools.createProfileHtml = (parent) => {
         })
     })
 }
+module.exports.HTMLTools.createLoginRegisterHtml = (parent) => {
+    return createElement("div", parent, main => {
+        main.style.position = "absolute"
+        main.style.left = "0px"
+        main.style.top = "32px"
+        main.style.width = "100%"
+        main.style.height = "calc(100% - 32px)"
+        main.siteLogo = createElement("img", main, img => {
+            img.style.position = "absolute"
+            img.style.left = "calc(50% - (192px / 2))"
+            img.style.width            = "192px"
+            img.style.height           = "192px"
+            img.style.top = "32px"
+            img.src = "scratch.png"
+            img.draggable = false
+        })
+    })
+}
 
 // helper tools
 module.exports.HelperTools = {}
 module.exports.HelperTools.askForLogin = () => {
     return new Promise((resolve, reject) => {
+        if (module.exports.isSignedIn) return resolve(module.exports.signedInAccountId)
+        let loginClose = false
+        const menu = BlocklyModule.menus.createMenu({
+            width: 648,
+            height: 512,
+            title: "Login to S4D JT",
+            zindex: 1005,
+        })
+        menu.style.background = "linear-gradient(180deg, rgba(22,23,25,1) 45%, rgba(76,0,128,1) 100%)"
+        menu.onclosed = () => {
+            if (loginClose) return
+            reject("MenuClose")
+        }
+        const htmlContent = module.exports.HTMLTools.createLoginRegisterHtml(menu.content)
         module.exports.isSignedIn = true
-        resolve(1)
+        module.exports.signedInAccountId = 1
+        resolve(module.exports.signedInAccountId)
     })
 }
 module.exports.HelperTools.showProfileMenu = (id) => {
