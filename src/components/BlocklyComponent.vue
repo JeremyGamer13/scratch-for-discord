@@ -1412,6 +1412,7 @@ _ \\END JS FUNC\\ _`
             if (project.projectType != "block") return alert("This project is not a Block!")
             const content = JSON.parse(project.content)
             const xml = Blockly.Xml.textToDom(content.blocks)
+            customBlockWorkspace.clear()
             Blockly.Xml.domToWorkspace(xml, customBlockWorkspace)
             codingArea__variablesFunctions.value = content.code.variablesFunctions
             codingArea__initFunc.value = content.code.init
