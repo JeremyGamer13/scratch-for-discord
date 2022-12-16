@@ -15,6 +15,8 @@
                 <FileMenu style="font-size: small;"></FileMenu>
                 <EditMenu style="font-size: small;"></EditMenu>
                 <ExamplesMenu style="font-size: small;"></ExamplesMenu>
+                <CommunityHub style="font-size: small;"></CommunityHub>
+                <ForumsMenu style="font-size: small;"></ForumsMenu>
                 <Socials style="font-size: small;"></Socials>
                 <shortcuts style="font-size: small;"></shortcuts>
                 <Credit style="font-size: small;"></Credit>
@@ -67,6 +69,8 @@ import EditMenu from "./EditMenu.vue";
 //import LanguageMenu from "./LanguageMenu.vue";
 import shortcuts from './shortcuts.vue';
 import ExamplesMenu from "./ExamplesMenu.vue";
+import CommunityHub from "./CommunityHub.vue";
+import ForumsMenu from "./ForumsMenu.vue";
 import CodeModal from "./CodeModal.vue";
 //import ToolboxModal from "./ToolboxModal.vue";
 import Socials from "./socials.vue";
@@ -85,6 +89,8 @@ export default {
         FileMenu,
         EditMenu,
         ExamplesMenu,
+        CommunityHub,
+        ForumsMenu,
         CodeModal,
         shortcuts,
         Credit,
