@@ -242,13 +242,13 @@ function loadForumsPage(page, div) {
                 "Let's see what's been happening recently...",
                 "Fun fact: The original S4D forums was pretty much completed in two days",
                 "Note: The API for the forums is publicly usable. If requested, blocks might be made for it.",
-                "Tip: There may be some more helpers in our Discord servers than on here due to how new it is. If your question hasn't been answered for a while, try checking those.",
+                "Tip: There may be some more helpers in our <a target=\"_blank\" href=\"https://discord.gg/rRUeqqc2SU\">Discord server</a> than on here due to how new it is. If your question hasn't been answered for a while, try checking <a target=\"_blank\" href=\"https://discord.gg/rRUeqqc2SU\">here.</a>",
                 "zzzzzzzzzzzzzzz...",
-                "<a href=\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\">https://www.youtube.com/watch?v=dQw4w9WgXcQ</a>",
+                "<a target=\"_blank\" href=\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\">https://www.youtube.com/watch?v=dQw4w9WgXcQ</a>",
                 "<p style=\"color:green\">look at me im colored green</p>",
                 "<i class=\"fa-solid fa-bullhorn\"></i> I AM THE ONE WHO DID THE POO",
                 "Tip: There are ways to type blocked characters without them actually needing to be the real thing. If you need to use them, try looking up how to type them in HTML.",
-                "Tip: Wanna learn how to use scratchblocks? You can find some things <a href=\"https://en.scratch-wiki.info/wiki/Block_Plugin/Syntax#Arguments\">here!</a>"
+                "Tip: Wanna learn how to use scratchblocks? You can find some things <a target=\"_blank\" href=\"https://en.scratch-wiki.info/wiki/Block_Plugin/Syntax#Arguments\">here!</a>"
             ]
             messages.push("Fun fact: There are " + messages.length + " different Home messages! Can you find them all?")
             document.getElementById("s4d_forums_welcome_message").innerHTML = messages[Math.round(Math.random() * (messages.length - 1))]
