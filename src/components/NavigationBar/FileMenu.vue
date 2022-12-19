@@ -16,6 +16,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import Blockly from "blockly";
 import JSZip from "jszip";
 import beautify from "js-beautify";
@@ -26,35 +27,35 @@ const blocklyModule = require("../../blocks/blocklyModule");
 // let workspaceContent = `<xml xmlns="https://developers.google.com/blockly/xml"></xml>`
 function fetchCustomBlocks(dataobj, loadfunc) {
   //window.isInS4DDebugMode = false
-  if (!window.isInS4DDebugMode) {
-    const w = blocklyModule.menus.createMenu({
-      width: 640,
-      height: 240,
-    });
-    w.content.style.textAlign = "center";
-    w.content.append(document.createElement("br"));
-    const h3 = document.createElement("h3");
-    h3.innerHTML =
-      "Enter Debug Mode to use custom blocks as it is experimental currently.";
-    const clear = w.createDecoratedButton();
-    clear.innerHTML = "Remove custom blocks from my autosaves";
-    clear.onclick = () => {
-      clear.innerHTML = "Removing...";
-      localforage
-        .removeItem("autosave_customBlocks")
-        .then(() => {
-          clear.innerHTML = "Cleared!";
-        })
-        .catch(() => {
-          clear.innerHTML = "An error occurred";
-        });
-    };
-    w.content.append(h3);
-    w.content.append(document.createElement("br"));
-    w.content.append(document.createElement("br"));
-    w.content.append(clear);
-    return;
-  }
+  // if (!window.isInS4DDebugMode) {
+    // const w = blocklyModule.menus.createMenu({
+      // width: 640,
+      // height: 240,
+    // });
+    // w.content.style.textAlign = "center";
+    // w.content.append(document.createElement("br"));
+    // const h3 = document.createElement("h3");
+    // h3.innerHTML =
+      // "Enter Debug Mode to use custom blocks as it is experimental currently.";
+    // const clear = w.createDecoratedButton();
+    // clear.innerHTML = "Remove custom blocks from my autosaves";
+    // clear.onclick = () => {
+      // clear.innerHTML = "Removing...";
+      // localforage
+        // .removeItem("autosave_customBlocks")
+        // .then(() => {
+          // clear.innerHTML = "Cleared!";
+        // })
+        // .catch(() => {
+          // clear.innerHTML = "An error occurred";
+        // });
+    // };
+    // w.content.append(h3);
+    // w.content.append(document.createElement("br"));
+    // w.content.append(document.createElement("br"));
+    // w.content.append(clear);
+    // return;
+  // }
   let j = {};
   try {
     j = JSON.parse(dataobj.customBlocks);
